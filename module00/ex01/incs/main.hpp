@@ -6,6 +6,8 @@
 # include <string>
 # include <array>
 
+using namespace std;
+
 class	Contact
 {
 	public:

@@ -15,22 +15,18 @@ int	main(int ac, char **av)
 	{
 		if (input == "ADD")
 		{
-			input = "";
+			input.clear();
 			if (index == 9)
 				index = 0;
 			std::cout << "Enter your first name:";
 			std::getline(std::cin,input);
-			if (!input.empty())
-				my_phonebook.the_phonebook[index].first_name = input;
-			else
+			while (input.empty() || std::cin.eof() == true)
 			{
-				while (input.empty() || std::cin.eof() == true)
-				{
-					std::cin.clear();
-					std::cout << "This field can not be empty:";
-					std::getline(std::cin,input);
-				}
+				std::cin.clear();
+				std::cout << "This field can not be empty:";
+				std::getline(std::cin,input);
 			}
+			my_phonebook.the_phonebook[index].first_name = input;
 			std::cout << "Enter your last name:";
 			std::getline(std::cin,input);
 			if (!input.empty())
@@ -59,7 +55,7 @@ int	main(int ac, char **av)
 				std::cin >> input;
 			}
 			my_phonebook.the_phonebook[index].darkest_secret = input;
-			std::cout << "\n";
+			my_phonebook.print_all_contact();
 			index++;
 		}
 		if (input == "SEARCH")
