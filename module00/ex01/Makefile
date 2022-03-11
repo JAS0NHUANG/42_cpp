@@ -25,6 +25,7 @@ INCS_DIR		=	incs
 
 SRCS			=	main.cpp \
 					phonebook.cpp \
+					contact.cpp \
 
 INCS			=	main.hpp \
 

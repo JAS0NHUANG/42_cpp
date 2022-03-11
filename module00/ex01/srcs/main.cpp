@@ -5,7 +5,7 @@ int to_int(string str)
      int index;
      index = 0;
      if (str[0] == '\0' )
-        throw std::invalid_argument("null or empty string argument");
+        throw invalid_argument("null or empty string argument");
 
      bool negate = (str[0] == '-');
      if ( str[0] == '+' || str[0] == '-' ) 
@@ -18,7 +18,7 @@ int to_int(string str)
      while(str[index])
      {
           if ( str[index] < '0' || str[index] > '9' )
-		 return (0);
+		 return (-1);
           result = result * 10  - (str[index] - '0');  //assume negative number
           index++;
      }
@@ -32,98 +32,51 @@ int	main(int ac, char **av)
 	(void)av;
 	PhoneBook	my_phonebook;
 	int			index;
+	int		search_index;
 	int get_input;
-	std::string	input;
+	string	input;
 
-	std::cout << "PhoneBook(Available commands: ADD, SEARCH, or EXIT):";
-	while (1)
-	{
-		std::cin.clear();
-		std::getline(std::cin, input);
-		if (input == "ADD")
-		{
-			std::cout << "OK\n";
-			continue ;
-		}
-		else
-		{
-			std::cout << "NG\n";
-			continue ;
-		}
-	}
-	while (std::cin.fail() || std::cin.eof() || input.empty())
-	{
-		std::cout << "Command can't be empty\n";
-		std::cout << "PhoneBook(Available commands: ADD, SEARCH, or EXIT):";
-		std::getline(std::cin, input);
-	}
 	index = 0;
+	input = "";
 	while (input != "EXIT")
 	{
-		if (input == "ADD")
+		cout << "PhoneBook(Available commands: ADD, SEARCH, or EXIT):";
+		getline(cin, input);
+		if (cin.eof())
+			break ;
+		else if (input == "ADD")
 		{
-			input.clear();
-			if (index == 9)
+			if (index == 8)
 				index = 0;
-			std::cout << "Enter your first name:";
-			std::cin >> input;
-			while (input.empty() || std::cin.eof())
-			{
-				std::cin.clear();
-				std::cout << "This field can not be empty:";
-				std::cin >> input;
-			}
-			my_phonebook.the_phonebook[index].first_name = input;
-			std::cout << "Enter your last name:";
-			std::getline(std::cin,input);
-			if (!input.empty())
-				my_phonebook.the_phonebook[index].last_name = input;
-			else
-			{
-				while (input.empty())
-				{
-					std::cout << "This field can not be empty:";
-					std::getline(std::cin,input);
-				}
-			}
-			std::cout << "Enter your nickname:";
-			std::cin >> input;
-			while (input.empty())
-			{
-				std::cout << "This field can not be empty:";
-				std::cin >> input;
-			}
-			my_phonebook.the_phonebook[index].nickname = input;
-			std::cout << "Enter your darkest secret:";
-			std::cin >> input;
-			while (input.empty())
-			{
-				std::cout << "This field can not be empty:";
-				std::cin >> input;
-			}
-			my_phonebook.the_phonebook[index].darkest_secret = input;
-			my_phonebook.print_all_contact();
+			Contact new_contact;
+			if (new_contact.create_new_contact() == 1)
+				break ;
+			my_phonebook.add_contact(index, new_contact);
 			index++;
 		}
-		if (input == "SEARCH")
+		else if (input == "SEARCH")
 		{
-			my_phonebook.print_all_contact();
-			std::cout << "The index of the contact you want to search:";
-			std::cin >> input;
-			try
+			if (my_phonebook.is_contact_empty(0))
+				cout << "The phone book is empty.\n";
+			else
 			{
-				index = to_int(input);
-				my_phonebook.print_contact(to_int(input));
-			}
-			catch(...)
-			{
+				my_phonebook.print_all_contact();
+				cout << "Enter The index of the contact you want to search:";
+				getline(cin, input);
+				if (cin.eof())
+					break ;
+				if (input.empty())
+					continue ;
+				search_index = to_int(input);
+				if (search_index < 0 || search_index > 8)
+					cout << "Invalid index\n";
+				else if (my_phonebook.is_contact_empty(search_index))
+					cout << "Contact index " << search_index << " not found.\n";
+				else
+					my_phonebook.print_contact(search_index);
 			}
 		}
-
-		std::cout << "PhoneBook(Available commands: ADD, SEARCH, or EXIT):";
-		std::cin >> input;
-		if (std::cin.eof() || input.empty())
-			return (1);
 	}
+	cout << "\nEXIT\n";
 	return (0);
 }

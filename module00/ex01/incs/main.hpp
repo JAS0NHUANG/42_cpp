@@ -2,9 +2,10 @@
 # define MAIN_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <string>
+# include <iomanip>
 
+# include "./contact.hpp"
 # include "./phonebook.hpp"
 
 using namespace std;
