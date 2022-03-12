@@ -24,7 +24,7 @@ void	PhoneBook::print_all_contact(void)
 	{
 		return ;
 	}
-	cout << "\n" << setw(10) << "index" \
+	cout << setw(10) << "index" \
 		<< " | " << setw(10) << "First name" \
 		<< " | " << setw(10) << "Last name" \
 		<< " | " << setw(10) << "Nickname" \
@@ -48,7 +48,7 @@ void	PhoneBook::print_contact(int index)
 {
 	if (index > 8 || this->contacts_array[index].get_first_name() == "")
 		return ;
-	cout << "\n" << setw(10) << "index" \
+	cout << setw(10) << "index" \
 		<< " | " << setw(10) << "First name" \
 		<< " | " << setw(10) << "Last name" \
 		<< " | " << setw(10) << "Nickname" \

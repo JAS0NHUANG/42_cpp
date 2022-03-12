@@ -2,42 +2,33 @@
 
 int to_int(string str)
 {
-     int index;
-     index = 0;
-     if (str[0] == '\0' )
-        throw invalid_argument("null or empty string argument");
+     int	index = 0;
+	 int	result = 0;
+	 int	negative = 1;
 
-     bool negate = (str[0] == '-');
-     if ( str[0] == '+' || str[0] == '-' ) 
+	 if (str[index] == '-')
+		 negative = -1;
+     if ( str[index] == '+' || str[index] == '-' )
          index++;
-
-     if ( str[index] == '\0')
-	 return (0);
-
-     int result = 0;
      while(str[index])
      {
           if ( str[index] < '0' || str[index] > '9' )
-		 return (-1);
-          result = result * 10  - (str[index] - '0');  //assume negative number
+			  return (INT_MIN);
+          result = result * 10  + (str[index] - '0');
           index++;
      }
-     return negate ? result : -result; //-result is positive!
+     return (result * negative);
 }
-
 
 int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
 	PhoneBook	my_phonebook;
-	int			index;
-	int		search_index;
-	int get_input;
-	string	input;
+	int			search_index = -1;
+	string		input = "";
+	int			index = 0;
 
-	index = 0;
-	input = "";
 	while (input != "EXIT")
 	{
 		cout << "PhoneBook(Available commands: ADD, SEARCH, or EXIT):";
