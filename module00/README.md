@@ -35,6 +35,8 @@ namespace Hello = XXX;
 
 www.cplusplus.com
 
+## String
+The "string" object and its methods.  
 
 ## OOP
 
@@ -60,19 +62,14 @@ Superclass this_is_a_superclass;
 ```
 
 ### attributes and functions(methods)
-just declare them inside the class :D
-and define them in a .cpp file.  
+Declare them inside the class and define them in a .cpp file.  
 The function/method inside a class will ALWAYS have at least one argument "this" even the function is declare as `function(void)`.  
 
-### 
+## encapsulation
 
+## class vs struct
 
-	
-	## encapsulation
-
-	## class vs struct
-
-	## accessors
+## accessors
 
 ## "this"
 
@@ -80,11 +77,7 @@ The function/method inside a class will ALWAYS have at least one argument "this"
 
 ## const
 
-
-
-
-
-
+# Excercises:  
 ## ex00
 - ostream:  
 	`std::cout << "Print this\n";`  
