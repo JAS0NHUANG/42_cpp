@@ -12,7 +12,7 @@ NAME			=	account_test
 # **************************************************************************** #
 #       FLAGS                                                                  #
 # **************************************************************************** #
-FLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 STD				=	-std=c++98
 FSAN			=	-fsanitize=address
 DEBUG			=	-g3 -O0
@@ -41,15 +41,19 @@ OBJS			=	$(addprefix $(SRCS_DIR)/,$(SRCS:.cpp=.o))
 					$(CPP) $(CFLAGS) $(STD) -I $(INCS_DIR) -c $< -o $@
 
 $(NAME)			:	$(OBJS)
-					$(CPP) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
 
 all				:	$(NAME)
+
+debug			:	$(OBJS)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR) $(FSAN) $(DEBUG)
 
 clean			:
 					$(RM) $(OBJS)
 
 fclean			:	clean
 					$(RM) $(NAME)
+					$(RM) debug
 
 re				:	fclean all
 

@@ -7,12 +7,12 @@ RM				=	rm -rf
 # **************************************************************************** #
 #       TITLE                                                                  #
 # **************************************************************************** #
-NAME			=	phonebook
+NAME			=	PhoneBook
 
 # **************************************************************************** #
 #       FLAGS                                                                  #
 # **************************************************************************** #
-FLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 STD				=	-std=c++98
 FSAN			=	-fsanitize=address
 DEBUG			=	-g3 -O0
@@ -24,8 +24,8 @@ SRCS_DIR		=	srcs
 INCS_DIR		=	incs
 
 SRCS			=	main.cpp \
-					phonebook.cpp \
-					contact.cpp \
+					PhoneBook.cpp \
+					Contact.cpp \
 
 INCS			=	main.hpp \
 
@@ -42,7 +42,10 @@ OBJS			=	$(addprefix $(SRCS_DIR)/,$(SRCS:.cpp=.o))
 					$(CPP) $(CFLAGS) $(STD) -I $(INCS_DIR) -c $< -o $@
 
 $(NAME)			:	$(OBJS)
-					$(CPP) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
+
+debug			:	$(OBJS)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR) $(FSAN) $(DEBUG)
 
 all				:	$(NAME)
 
@@ -51,6 +54,7 @@ clean			:
 
 fclean			:	clean
 					$(RM) $(NAME)
+					$(RM) debug 
 
 re				:	fclean all
 

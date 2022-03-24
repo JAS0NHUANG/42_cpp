@@ -1,4 +1,4 @@
-#include "megaphone.hpp"
+#include "main.hpp"
 
 int	main(int ac, char **av) {
 	std::string	str_holder;
@@ -10,7 +10,7 @@ int	main(int ac, char **av) {
 	for (int i = 1; i < ac; i++)
 	{
 		str_holder = av[i];
-		for (int j = 0; j < str_holder.length(); j++)
+		for (int j = 0; j < (int)str_holder.length(); j++)
 			std::cout << (char)toupper(str_holder[j]);
 	}
 	std::cout << '\n';
