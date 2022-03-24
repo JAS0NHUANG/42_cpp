@@ -13,7 +13,7 @@ NAME			=	megaphone
 #       FLAGS                                                                  #
 # **************************************************************************** #
 FLAGS			=	-Wall -Wextra -Werror
-STD			=	-std=c++98
+STD				=	-std=c++98
 FSAN			=	-fsanitize=address
 DEBUG			=	-g3 -O0
 
@@ -23,7 +23,7 @@ DEBUG			=	-g3 -O0
 SRCS_DIR		=	srcs
 INCS_DIR		=	incs
 
-SRCS			=	$(NAME).cpp \
+SRCS			=	main.cpp \
 
 INCS			=	$(NAME).hpp \
 
@@ -39,7 +39,7 @@ OBJS			=	$(addprefix $(SRCS_DIR)/,$(SRCS:.cpp=.o))
 %.o				:	%.cpp
 					$(CPP) $(CFLAGS) $(STD) -I $(INCS_DIR) -c $< -o $@
 
-$(NAME)			:	$(OBJS) 
+$(NAME)			:	$(OBJS)
 					$(CPP) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
 
 all				:	$(NAME)

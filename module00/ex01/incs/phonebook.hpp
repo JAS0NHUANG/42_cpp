@@ -1,8 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-class	PhoneBook
-{
+class	PhoneBook {
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
@@ -13,7 +12,7 @@ class	PhoneBook
 		int		is_contact_empty(int index);
 
 	private:
-		Contact	contacts_array[9];
+		Contact	contacts_array[8];
 };
 
 #endif

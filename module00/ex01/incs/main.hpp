@@ -8,6 +8,4 @@
 # include "./contact.hpp"
 # include "./phonebook.hpp"
 
-using namespace std;
-
 #endif

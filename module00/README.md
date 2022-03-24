@@ -30,6 +30,9 @@ namespace Hello = XXX;
 `<<`, `>>` - data flow.
 
 `std::endl` - better portability then simple `\n`? (But I found some articles suggest to use `\n` rather then `endl`. So what's the GOOD answer?)  
+[What is the difference between endl and \n in C++?](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp)  
+[cppreferencd.com - std::endl](https://en.cppreference.com/w/cpp/io/manip/endl)  
+[stackoverflow.com - "std::endl" vs "\n"](https://stackoverflow.com/questions/213907/stdendl-vs-n)  
 
 `cin` problem: the user input will be split according to 'spaces'.
 
