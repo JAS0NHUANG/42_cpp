@@ -89,4 +89,8 @@ The function/method inside a class will ALWAYS have at least one argument "this"
 - istream:  
 	`std::cin >> holder;`  
 - string:  
-	string.length();
+	`std::string.length();`
+	`std::string.substr(starting_index, ending_index);`
+	`std::setw(N)` (set the output width to N) and `<< std::left << std::setw(N)` (left align the output and set the width to N)
+
+	
