@@ -53,7 +53,7 @@ int	main(void) {
 		if (std::cin.eof())
 			break ;
 		else if (input == "ADD") {
-			if (index == 7)
+			if (index == 8)
 				index = 0;
 			Contact new_contact;
 			if (new_contact.create_new_contact() == 1)
