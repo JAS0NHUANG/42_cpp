@@ -35,10 +35,10 @@ void	PhoneBook::print_all_contact(void) {
 void	PhoneBook::print_contact(int index) {
 	if (index > 7 || this->contacts_array[index].get_first_name() == "")
 		return ;
-	std::cout << std::setw(20) << "index: " << index << "\n" \
-		<< std::setw(20) << "First name: " << this->contacts_array[index].get_first_name() << "\n" \
-		<< std::setw(20) << "Last name: " << this->contacts_array[index].get_last_name() << "\n" \
-		<< std::setw(20) << "Nickname: " << this->contacts_array[index].get_nickname() << "\n" \
-		<< std::setw(20) << "Darkest secret: " << this->contacts_array[index].get_secret() << "\n";
+	std::cout << std::left << std::setw(20) << "index: " << index << "\n" \
+		<< std::left << std::setw(20) << "First name: " << this->contacts_array[index].get_first_name() << "\n" \
+		<< std::left << std::setw(20) << "Last name: " << this->contacts_array[index].get_last_name() << "\n" \
+		<< std::left << std::setw(20) << "Nickname: " << this->contacts_array[index].get_nickname() << "\n" \
+		<< std::left << std::setw(20) << "Darkest secret: " << this->contacts_array[index].get_secret() << "\n";
 	return ;
 }

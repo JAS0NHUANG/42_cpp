@@ -9,6 +9,8 @@ std::string	get_user_input(std::string const message) {
 	while (user_input.empty()) {
 		std::cout << "This field can not be empty:";
 		std::getline(std::cin, user_input);
+		if (std::cin.eof())
+			return "";
 	}
 	return (user_input);
 }

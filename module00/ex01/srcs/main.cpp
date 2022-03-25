@@ -9,6 +9,8 @@ int to_int(std::string str) {
 		 negative = -1;
      if ( str[index] == '+' || str[index] == '-' )
          index++;
+     if (!str[index])
+	     return (INT_MIN);
      while(str[index]) {
           if ( str[index] < '0' || str[index] > '9' )
 			  return (INT_MIN);
