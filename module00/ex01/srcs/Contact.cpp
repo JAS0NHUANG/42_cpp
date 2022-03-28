@@ -31,6 +31,10 @@ void	Contact::set_nickname(std::string nickname) {
 	this->nickname = nickname;
 }
 
+void	Contact::set_number(std::string number) {
+	this->number = number;
+}
+
 void	Contact::set_secret(std::string secret) {
 	this->secret= secret;
 }
@@ -47,6 +51,10 @@ std::string	Contact::get_nickname(void) const {
 	return (this->nickname);
 }
 
+std::string	Contact::get_number(void) const {
+	return (this->number);
+}
+
 std::string	Contact::get_secret(void) const {
 	return (this->secret);
 }
@@ -55,6 +63,7 @@ int	Contact::create_new_contact(void) {
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
+	std::string	number;
 	std::string	secret;
 
 	first_name = get_user_input("Enter your first name:");
@@ -66,12 +75,16 @@ int	Contact::create_new_contact(void) {
 	nickname = get_user_input("Enter your nickname:");
 	if (nickname.empty())
 		return (1);
+	number = get_user_input("Enter your phone number:");
+	if (number.empty())
+		return (1);
 	secret = get_user_input("Enter your darkest secret:");
 	if (secret.empty())
 		return (1);
 	set_first_name(first_name);
 	set_last_name(last_name);
 	set_nickname(nickname);
+	set_number(number);
 	set_secret(secret);
 	return (0);
 }
