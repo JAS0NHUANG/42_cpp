@@ -1,3 +1,9 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie( 
+int	main( void )
+{
+	Zombie *ohhh = new Zombie("kkkk");
+	(void)ohhh;
+	return (0);
+}
+
