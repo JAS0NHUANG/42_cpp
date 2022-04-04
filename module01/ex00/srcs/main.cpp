@@ -3,7 +3,9 @@
 int	main( void )
 {
 	Zombie *ohhh = new Zombie("kkkk");
-	(void)ohhh;
+	Zombie *ho = newZombie("hohoh");
+
+	delete(ohhh);
+	delete(ho);
 	return (0);
 }
-

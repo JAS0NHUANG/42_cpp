@@ -25,6 +25,7 @@ INCS_DIR		=	incs
 
 SRCS			=	main.cpp \
 					Zombie.cpp \
+					newZombie.cpp \
 
 INCS			=	Zombie.hpp \
 
