@@ -15,3 +15,13 @@ delete Hohoho;
 As simple as that :D
 
 ## ex00
+
+## ex01
+1. instancialize X amount of objects with an array.  
+`Zombie the_horde = new Zombie[X];`
+
+2. [delete an array of objects](https://stackoverflow.com/questions/2486034/delete-an-array-of-objects)
+`delete[] the_horde;`
+
+3. https://stackoverflow.com/questions/9377407/displaying-the-address-of-a-string
+
