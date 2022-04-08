@@ -7,7 +7,7 @@ RM				=	rm -rf
 # **************************************************************************** #
 #       TITLE                                                                  #
 # **************************************************************************** #
-NAME			=	BraiiiiiiinnnzzzZ
+NAME			=	HI
 
 # **************************************************************************** #
 #       FLAGS                                                                  #
@@ -20,16 +20,7 @@ DEBUG			=	-g3 -O0
 # **************************************************************************** #
 #       SOURCES                                                                #
 # **************************************************************************** #
-SRCS_DIR		=	srcs
-INCS_DIR		=	incs
-
 SRCS			=	main.cpp \
-					Zombie.cpp \
-					newZombie.cpp \
-					randomChump.cpp \
-					zombieHorde.cpp \
-
-INCS			=	Zombie.hpp \
 
 # **************************************************************************** #
 #       LIBRARIES                                                              #
@@ -38,18 +29,18 @@ INCS			=	Zombie.hpp \
 # **************************************************************************** #
 #       RULES                                                                  #
 # **************************************************************************** #
-OBJS			=	$(addprefix $(SRCS_DIR)/,$(SRCS:.cpp=.o))
+OBJS			=	$(SRCS:.cpp=.o)
 
 %.o				:	%.cpp
-					$(CPP) $(CFLAGS) $(STD) -I $(INCS_DIR) -c $< -o $@
+					$(CPP) $(CFLAGS) $(STD) -c $< -o $@
 
 $(NAME)			:	$(OBJS)
-					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS)
 
 all				:	$(NAME)
 
 debug			:	$(OBJS)
-					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) -I $(INCS_DIR) $(FSAN) $(DEBUG)
+					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) $(FSAN) $(DEBUG)
 
 clean			:
 					$(RM) $(OBJS)

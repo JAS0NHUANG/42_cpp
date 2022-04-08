@@ -25,3 +25,19 @@ As simple as that :D
 
 3. https://stackoverflow.com/questions/9377407/displaying-the-address-of-a-string
 
+
+## ex02
+### reference vs value
+```
+int	myNumber = 7;
+int	*myNumberPtr = &myNumber;
+int	&myNumberRef = myNumber;
+```
+- A reference can never point to NULL, and it can't be reasigned to another address.  
+- But we can change the value inside that address.  
+```
+myNumberRef = 77;
+```
+- Return the "reference".  
+
+

@@ -1,16 +1,16 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie( void ){
-	std::cout << "void zombie\t rised from the death~~~\n";
+	std::cout << "Nameless zombie rose from the dead~~~\n";
 }
 
 Zombie::Zombie( std::string name ){
 	this->name = name;
-	std::cout << "Zombie " << this->name << "\t rised from the death~~~\n";
+	std::cout << "Zombie " << this->name << " rose from the dead~~~\n";
 }
 
 Zombie::~Zombie( void ){
-	std::cout << "Zombie " << this->name << "\t destroid~~~\n";
+	std::cout << "Zombie " << this->name << " vanished~~~\n";
 }
 
 void	Zombie::setName( std::string name ) {
