@@ -40,4 +40,11 @@ myNumberRef = 77;
 ```
 - Return the "reference".  
 
+## ex03
+Usage of pointer and reference
 
+## ex04
+### fstream
+```
+sdt::fstream theFile;
+theFile.open(path, mode)
