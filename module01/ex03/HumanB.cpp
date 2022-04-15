@@ -9,7 +9,7 @@ HumanB::HumanB(std::string name) {
 }
 
 HumanB::~HumanB(void) {
-	std::cout << "HumanB is gone.\n";
+	std::cout << "HumanB (" << this->name << ") is gone.\n";
 }
 
 void	HumanB::attack(void){

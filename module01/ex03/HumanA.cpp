@@ -8,7 +8,7 @@ HumanA::HumanA (std::string name, Weapon &weapon): weapon(weapon) {
 }
 
 HumanA::~HumanA(void){
-	std::cout << "HumanA is gone!\n";
+	std::cout << "HumanA (" << this->name << ") is gone!\n";
 	return ;
 }
 
