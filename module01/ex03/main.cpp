@@ -2,6 +2,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+// testing main from the subject.
 int main()
 {
 	{
