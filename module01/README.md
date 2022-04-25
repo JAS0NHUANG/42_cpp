@@ -42,6 +42,7 @@ myNumberRef = 77;
 
 ## ex03
 Usage of pointer and reference
+* Be careful! The `getType()` function must return a "const reference" to type.
 
 ## ex04
 ### fstream
