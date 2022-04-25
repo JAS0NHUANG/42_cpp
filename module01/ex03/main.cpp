@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
@@ -12,10 +14,15 @@ int main()
 		club.setType("some other type of club");
 		bob.attack();
 	}
+	/* debug
+	std::cout << "\n ---------- The seperation line ---------- \n\n";
+	*/
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
+		/* debug
 		jim.attack();
+		*/
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");

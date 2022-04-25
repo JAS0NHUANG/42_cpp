@@ -26,17 +26,11 @@ void	Harl::error( void ){
 };
 
 void	Harl::complain( std::string level ){
-	//why this is working????????????
-	void		(Harl::*ft_ptr[4])() = {
-				&Harl::debug,
-				&Harl::info,
-				&Harl::warning,
-				&Harl::error };
+	void		(Harl::*ft_ptr[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++) {
 		if (levels[i].compare(level) == 0)
-			//why this is working????????????
 			(this->*ft_ptr[i])();
 	}
 	return ;

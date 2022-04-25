@@ -7,7 +7,9 @@ Weapon::Weapon(std::string type){
 }
 
 Weapon::~Weapon(void){
+	/* debug
 	std::cout << "\t(Debug)Weapon destroied!\n";
+	*/
 	return ;
 }
 

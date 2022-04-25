@@ -53,7 +53,7 @@ void	Harl::complain( std::string level ){
 			std::cout << "\n";
 			break ;
 		default:
-			std::cout << "[ MUUUUUURRRRRRRR MUUUUUUURRRRRRR~~~~~~ ]\n";
+			std::cout << "[ Probably complaining about insignificant problems ]\n";
 			break ;
 	}
 	return ;

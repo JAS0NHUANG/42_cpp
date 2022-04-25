@@ -15,6 +15,8 @@ int	replace_string_in_file(std::string to_find, std::string to_replace,
 		std::fstream &the_file, std::string filename)
 {
 	std::ofstream replace_file(filename.append(".replace").c_str());
+	if (!replace_file)
+		return (1);
 	std::string str_buff;
 	std::size_t found_i = 0;
 	std::size_t index = 0;
@@ -45,8 +47,9 @@ int	main(int ac, char **av) {
 	if (the_file.is_open()) {
 		std::string to_find = av[2];
 		std::string to_replace = av[3];
-		replace_string_in_file(to_find, to_replace, the_file, filename);
+		if (replace_string_in_file(to_find, to_replace, the_file, filename))
+			return (return_err(2, av[1]));
 	} else
-		return (return_err(1, av[1]));
+		return (return_err(2, av[1]));
 	return (0);
 }

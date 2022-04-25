@@ -16,6 +16,7 @@ class HumanB {
 		void				attack(void);
 
 	private:
+		// Set as a pointer cuz it might not be armed.
 		Weapon		*weapon;
 		std::string	name;
 };

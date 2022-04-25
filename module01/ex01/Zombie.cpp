@@ -4,13 +4,8 @@ Zombie::Zombie( void ){
 	std::cout << "Nameless zombie rose from the dead~~~\n";
 }
 
-Zombie::Zombie( std::string name ){
-	this->name = name;
-	std::cout << "Zombie " << this->name << " rose from the dead~~~\n";
-}
-
 Zombie::~Zombie( void ){
-	std::cout << "Zombie " << this->name << " vanished~~~\n";
+	std::cout << "Zombie " << this->name << " died~~~(again)\n";
 }
 
 void	Zombie::setName( std::string name ) {
