@@ -19,6 +19,11 @@ What should be included:
 ClassName(const ClassName &theObject);
 ```
 
+then inside the function, asign the "theObject" to "this"
+```
+*this = theObject;
+```
+
 ## Copy assignment operator
 operator overloading 
 ```
