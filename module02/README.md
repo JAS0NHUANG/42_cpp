@@ -31,3 +31,6 @@ ClassName &ClassName::operation=(const ClassName &object);
 ```
 
 ## Fixed-point number
+
+## increment / decrement operator overloading
+https://www.tutorialspoint.com/cplusplus/increment_decrement_operators_overloading.htm
