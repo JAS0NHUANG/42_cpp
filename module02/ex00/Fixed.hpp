@@ -11,7 +11,7 @@ class Fixed {
 		// copy constructor
 		Fixed(const Fixed &toCopy);
 		// copy assignment operator overload
-		Fixed &Fixed::operator=(const Fixed &toAssign);
+		Fixed &operator=(const Fixed &toAssign);
 
 		int			getRawBits(void) const;
 		void			setRawBits(int const raw);

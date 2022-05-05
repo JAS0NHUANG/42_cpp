@@ -26,3 +26,9 @@ ClassName &ClassName::operation=(const ClassName &object);
 ```
 
 ## Fixed-point number
+
+## binary operation
+only works on integer types: int, short, long ...etc.
+
+## operator overload on "<<"
+
