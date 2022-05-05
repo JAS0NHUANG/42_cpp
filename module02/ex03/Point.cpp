@@ -5,8 +5,8 @@ Point::Point( void ) : x(Fixed(0)), y(Fixed(0)) {};
 Point::Point( const float x, const float y) : x(Fixed(x)), y(Fixed(y)) {};
 
 Point	&Point::operator=( Point const &toAssign) {
-	*const_cast<Fixed*>(&this->x) = toAssign.getX();
-	*const_cast<Fixed*>(&this->y) = toAssign.getY();
+	*const_cast<Fixed*>(&this->x) = toAssign.x;
+	*const_cast<Fixed*>(&this->y) = toAssign.y;
 	return (*this);
 };
 
