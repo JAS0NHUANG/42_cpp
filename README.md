@@ -16,3 +16,11 @@ Learn C++
 ## [module00](/module00)
 
 ## [moduule01](/module01)
+
+## Learning resources
+
+cppreference.com  
+
+- Youtube channels:  
+	[The Cherno](https://www.youtube.com/channel/UCQ-W1KE9EYfdxhL6S4twUNw)
+	[]

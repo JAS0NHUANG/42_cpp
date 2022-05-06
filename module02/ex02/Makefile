@@ -7,23 +7,23 @@ RM			=	rm -rf
 # **************************************************************************** #
 #       TITLE                                                                  #
 # **************************************************************************** #
-NAME			=	Fixed
+NAME		=	Fixed
 
 # **************************************************************************** #
 #       FLAGS                                                                  #
 # **************************************************************************** #
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 STD			=	-std=c++98
-FSAN			=	-fsanitize=address
-DEBUG			=	-g3 -O0
+FSAN		=	-fsanitize=address
+DEBUG		=	-g3 -O0
 
 # **************************************************************************** #
 #       SOURCES                                                                #
 # **************************************************************************** #
-SRCS			=	main.cpp \
+SRCS		=	main.cpp \
 				Fixed.cpp \
 
-INCS			=	Fixed.hpp \
+INCS		=	Fixed.hpp \
 
 # **************************************************************************** #
 #       LIBRARIES                                                              #
@@ -32,29 +32,29 @@ INCS			=	Fixed.hpp \
 # **************************************************************************** #
 #       RULES                                                                  #
 # **************************************************************************** #
-OBJS			=	$(SRCS:.cpp=.o)
+OBJS		=	$(SRCS:.cpp=.o)
 
-%.o				:	%.cpp
-					$(CPP) $(CFLAGS) $(STD) -c $< -o $@
+%.o			:	%.cpp
+				$(CPP) $(CFLAGS) $(STD) -c $< -o $@
 
-$(NAME)			:	$(OBJS)
-					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS)
+$(NAME)		:	$(OBJS)
+				$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS)
 
-all				:	$(NAME)
+all			:	$(NAME)
 
-debug			:	$(OBJS)
-					$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) $(FSAN) $(DEBUG)
+debug		:	$(OBJS)
+				$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) $(FSAN) $(DEBUG)
 
-clean			:
-					$(RM) $(OBJS)
+clean		:
+				$(RM) $(OBJS)
 
-fclean			:	clean
-					$(RM) $(NAME)
-					$(RM) debug
+fclean		:	clean
+				$(RM) $(NAME)
+				$(RM) debug
 
-re				:	fclean all
+re			:	fclean all
 
 # **************************************************************************** #
 #       PHONY                                                                  #
 # **************************************************************************** #
-.PHONY			:	all clean fclean re
+.PHONY		:	all clean fclean re
