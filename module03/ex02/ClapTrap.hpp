@@ -4,7 +4,7 @@
 # include <string>
 
 class	ClapTrap {
-	private:
+	protected:
 		std::string		name;
 		int			hitPoints;
 		int			energyPoints;
@@ -17,7 +17,7 @@ class	ClapTrap {
 		~ClapTrap( void );
 		ClapTrap( const ClapTrap &toCopy );
 		ClapTrap	&operator=( const ClapTrap &toAssign );
-		
+
 		// getter / setter
 		void	setName( std::string &name );
 		void	setHitPoints( int hitPoints);
