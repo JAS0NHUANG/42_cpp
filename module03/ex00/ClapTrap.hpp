@@ -1,6 +1,8 @@
 #ifndef _CLAPTRAP_HPP_
 # define _CLAPTRAP_HPP_
 
+# include <string>
+
 class	ClapTrap {
 	private:
 		std::string	name;
@@ -10,8 +12,9 @@ class	ClapTrap {
 
 	public:
 		// canonical form
+		ClapTrap( void );
 		ClapTrap( std::string name );
-		~ClapTrap( std::string name );
+		~ClapTrap( void );
 		ClapTrap( const ClapTrap &toCopy );
 		ClapTrap	&operator=( const ClapTrap &toAssign );
 
