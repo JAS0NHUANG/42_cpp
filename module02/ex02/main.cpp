@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 #include "Fixed.hpp"
 
@@ -20,11 +21,14 @@ int main( void ) {
 
 		std::cout << "\n\n~~~~~~~~ extra tests ~~~~~~~~~\n\n";
 
-		std::cout << Fixed::min( a, b ) << std::endl;
-		std::cout << Fixed(5.05f) / Fixed(2) << std::endl;
-		std::cout << c << std::endl;
-		std::cout << --c << std::endl;
-		std::cout << --c << std::endl;
+		std::cout << "a is " << a << std::endl;
+		std::cout << "b is " << b << std::endl;
+		std::cout << "min in a and b: " << Fixed::min( a, b ) << std::endl;
+		std::cout << "max in a and b: " << Fixed::max( a, b ) << std::endl;
+		std::cout << "5.05f / 2 = " << Fixed(5.05f) / Fixed(2) << std::endl;
+		std::cout << "c: " << c << std::endl;
+		std::cout << "--c: " << --c << std::endl;
+		std::cout << "--c: " << --c << std::endl;
 	}
 	{
 		std::cout << "\n\n~~~~~~~~ some other tests ~~~~~~~~~\n\n";
@@ -39,9 +43,10 @@ int main( void ) {
 		std::cout << "c is " << c << std::endl;
 		std::cout << "d is " << d << std::endl;
 
-		std::cout << "a is greater then b? " << (a > b) << std::endl;
-		std::cout << "a is lesser then b? " << (a < b) << std::endl;
-		std::cout << "a is equal to b? " << (a == b) << std::endl;
+		std::cout << std::left << std::setw(22) << "a is greater then b? " << (a > b) << std::endl;
+		std::cout << std::left << std::setw(22) << "a is lesser then b? " << (a < b) << std::endl;
+		std::cout << std::left << std::setw(22) << "a is equal to b? " << (a == b) << std::endl;
+		std::cout << std::left << std::setw(22) << "b is equal to d? " << (b == d) << std::endl;
 
 		std::cout << "a + b = " << (a + b) << std::endl;
 		std::cout << "a - b = " << (a - b) << std::endl;
