@@ -4,7 +4,7 @@
 class	DiamondTrap : public ScavTrap, public FragTrap {
 	private:
 		std::string	name;
-	
+
 	public:
 		// constructor / destructor
 		DiamondTrap( void );
@@ -13,7 +13,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 		~DiamondTrap( void );
 
 		// member functions
-		using		ScavTrap::attack;
-		void		whoAmI( void ) const;
+		using				ScavTrap::attack;
+		void				whoAmI( void ) const;
 		const std::string	&getName( void ) const;
 };

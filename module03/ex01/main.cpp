@@ -3,10 +3,11 @@
 
 #include <iostream>
 
-void	printTrap( const ClapTrap &theTrap) {
-	std::cout << theTrap.getName() << " hit points: " << theTrap.getHitPoints() << "\n";
-	std::cout << theTrap.getName() << " energy points: " << theTrap.getEnergyPoints() << "\n";
-	std::cout << theTrap.getName() << " attack damage: " << theTrap.getAttackDamage() << "\n";
+void	printClapTrap( const ClapTrap &theClapTrap) {
+	std::cout << "\n" << theClapTrap.getName() << "'s info\n";
+	std::cout << theClapTrap.getName() << "'s HP: " << theClapTrap.getHitPoints() << "\n";
+	std::cout << theClapTrap.getName() << "'s EP: " << theClapTrap.getEnergyPoints() << "\n";
+	std::cout << theClapTrap.getName() << "'s AD: " << theClapTrap.getAttackDamage() << "\n";
 
 };
 
