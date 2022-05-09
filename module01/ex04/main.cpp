@@ -38,7 +38,7 @@ int	replace_string_in_file(std::string to_find, std::string to_replace,
 }
 
 int	main(int ac, char **av) {
-	if (ac != 4)
+	if (ac != 4 || av[2][0] == '\0')
 		return (return_err(1, NULL));
 	std::string filename = av[1];
 	std::fstream the_file;

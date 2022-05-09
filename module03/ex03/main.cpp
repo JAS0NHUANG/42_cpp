@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 #include <iostream>
 
@@ -16,6 +17,8 @@ int	main( void ) {
 	ClapTrap	b = blablabla;
 	ScavTrap	kk("abc");
 	FragTrap	oo;
+	DiamondTrap	dd;
+	DiamondTrap	DDD("Diamond oo");
 
 	blablabla.attack("oooo");
 	b.attack("yoyo");
@@ -25,4 +28,7 @@ int	main( void ) {
 	printTrap(kk);
 	kk.guardGate();
 	oo.highFiveGuys();
+
+	dd.whoAmI();
+	DDD.whoAmI();
 }
