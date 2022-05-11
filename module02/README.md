@@ -14,7 +14,7 @@ What should be included:
 - Destructor
 - Copy assignment operator
 
-## Copy constructor
+### Copy constructor
 ```
 ClassName(const ClassName &theObject);
 ```
@@ -25,7 +25,7 @@ This is dependent to the copy asignment operator. Meaning that if the copy asign
 *this = theObject;
 ```
 
-## Copy assignment operator
+### Copy assignment operator
 operator overloading 
 ```
 ClassName &ClassName::operation=(const ClassName &object);
@@ -35,6 +35,8 @@ ClassName &ClassName::operation=(const ClassName &object);
 
 ## binary operation
 only works on integer types: int, short, long ...etc.
+
+[Calculator](https://www.rapidtables.com/convert/number/decimal-to-binary.html?x=2048)
 
 ## operator overload on "<<"
 	[Berkeley - Intro to Fixed Point Number](https://inst.eecs.berkeley.edu//~cs61c/sp06/handout/fixedpt.html)  
@@ -51,8 +53,9 @@ https://www.tutorialspoint.com/cplusplus/increment_decrement_operators_overloadi
 
 
 ## Check the side of one point relative to a line.
+[Binary space partitioning](https://en.wikipedia.org/wiki/Binary_space_partitioning)  
 [Dot product](https://en.wikipedia.org/wiki/Dot_product)  
-[Calculate on which side of a straight line is a given point located?](https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located)  
+[Calculate on which side of a straight line is a given point located?](https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located)   
 
 ## Initializer list
-[When do we use Initializer List in C++?](https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/)  
+[When do we use Initializer List in C++?](https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/)   
