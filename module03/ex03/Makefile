@@ -16,7 +16,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 STD			=	-std=c++98
 FSAN		=	-fsanitize=address
 DEBUG		=	-g3 -O0
-SHADOW		=	-Wshadow
+SHADOW		=	-Wshadow=local
 
 # **************************************************************************** #
 #       SOURCES                                                                #

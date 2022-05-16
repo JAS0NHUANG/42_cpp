@@ -59,3 +59,6 @@ https://www.tutorialspoint.com/cplusplus/increment_decrement_operators_overloadi
 
 ## Initializer list
 [When do we use Initializer List in C++?](https://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/)   
+
+## roundf() function  
+https://en.cppreference.com/w/c/numeric/math/round
