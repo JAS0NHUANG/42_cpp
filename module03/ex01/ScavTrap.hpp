@@ -7,7 +7,13 @@ class	ScavTrap : public ClapTrap {
 	public:
 		ScavTrap( void );
 		ScavTrap( std::string name );
+		ScavTrap( const ScavTrap &toCopy );
 		~ScavTrap( void );
+
+		// copy assignment overload
+		ScavTrap	&operator=( const ScavTrap &toAssign );
+
+		void	attack( const std::string& target );
 		void	guardGate( void );
 };
 

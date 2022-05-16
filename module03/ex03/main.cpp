@@ -1,34 +1,60 @@
+#include <iostream>
+
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
-#include <iostream>
+void	printClapTrap( const ClapTrap &theClapTrap) {
+	std::cout << "\n~~~~~~~" << theClapTrap.getName() << "'s info~~~~~~~\n";
+	std::cout << theClapTrap.getName() << \
+		"'s HP: " << theClapTrap.getHitPoints() << \
+		", EP: " << theClapTrap.getEnergyPoints() << \
+		", AD: " << theClapTrap.getAttackDamage() << "\n";
+};
 
-void	printTrap( const ClapTrap &theTrap) {
-	std::cout << theTrap.getName() << " hit points: " << theTrap.getHitPoints() << "\n";
-	std::cout << theTrap.getName() << " energy points: " << theTrap.getEnergyPoints() << "\n";
-	std::cout << theTrap.getName() << " attack damage: " << theTrap.getAttackDamage() << "\n";
-
+void	printDiamondTrap( const DiamondTrap &theClapTrap) {
+	std::cout << "\n~~~~~~~" << theClapTrap.getName() << "'s info~~~~~~~\n";
+	std::cout << theClapTrap.getName() << \
+		" (aka: " << theClapTrap.ClapTrap::getName() << ")" << \
+		"'s HP: " << theClapTrap.getHitPoints() << \
+		", EP: " << theClapTrap.getEnergyPoints() << \
+		", AD: " << theClapTrap.getAttackDamage() << "\n";
 };
 
 int	main( void ) {
-	ClapTrap	blablabla;
-	ClapTrap	b = blablabla;
-	ScavTrap	kk("abc");
-	FragTrap	oo;
-	DiamondTrap	dd;
-	DiamondTrap	DDD("Diamond oo");
+	std::cout << "Create all Traps:\n";
+	ClapTrap	clap1("clap1");
+	ScavTrap	scav1("scav1");
+	FragTrap	frag1("frag1");
+	DiamondTrap	dmd1("dmd1");
 
-	blablabla.attack("oooo");
-	b.attack("yoyo");
+	printClapTrap(clap1);
+	printClapTrap(scav1);
+	printClapTrap(frag1);
+	printDiamondTrap(dmd1);
 
-	printTrap(kk);
-	kk.attack("yoyo");
-	printTrap(kk);
-	kk.guardGate();
-	oo.highFiveGuys();
+	std::cout << "\nfrag and scav's actions:\n";
+	scav1.guardGate();
+	frag1.highFivesGuys();
 
-	dd.whoAmI();
-	DDD.whoAmI();
+	std::cout << "\nDiamond can do all:\n";
+	dmd1.DiamondTrap::guardGate();
+	dmd1.DiamondTrap::highFivesGuys();
+	dmd1.DiamondTrap::whoAmI();
+
+	std::cout << "\n ⚔️	dmd1 vs frag1!! FIGHT!! \n";
+
+	dmd1.attack("frag1");
+	frag1.takeDamage(dmd1.getAttackDamage());
+	printClapTrap(dmd1);
+	printClapTrap(frag1);
+
+	std::cout << "\n";
+	frag1.attack("dmd1");
+	dmd1.takeDamage(frag1.getAttackDamage());
+	printClapTrap(dmd1);
+	printClapTrap(frag1);
+
+	std::cout << "\nCall the distructors before exit the main function\n";
 }

@@ -7,7 +7,7 @@ RM			=	rm -rf
 # **************************************************************************** #
 #       TITLE                                                                  #
 # **************************************************************************** #
-NAME		=	ClapTrap
+NAME		=	DiamondTrap
 
 # **************************************************************************** #
 #       FLAGS                                                                  #
@@ -16,6 +16,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 STD			=	-std=c++98
 FSAN		=	-fsanitize=address
 DEBUG		=	-g3 -O0
+SHADOW		=	-Wshadow
 
 # **************************************************************************** #
 #       SOURCES                                                                #
@@ -25,8 +26,6 @@ SRCS		=	main.cpp \
 				ScavTrap.cpp \
 				FragTrap.cpp \
 				DiamondTrap.cpp \
-
-INCS		=	ClapTrap.hpp \
 
 # **************************************************************************** #
 #       LIBRARIES                                                              #
@@ -46,7 +45,7 @@ $(NAME)		:	$(OBJS)
 all			:	$(NAME)
 
 debug		:	$(OBJS)
-				$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) $(FSAN) $(DEBUG)
+				$(CPP) $(CFLAGS) $(STD) -o $@ $(OBJS) $(FSAN) $(DEBUG) $(SHADOW)
 
 clean		:
 				$(RM) $(OBJS)

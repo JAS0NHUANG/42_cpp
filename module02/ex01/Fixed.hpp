@@ -6,7 +6,7 @@
 class Fixed {
 
 	private:
-		int			value;
+		int					value;
 		static const int	frctnl_bits;
 
 	public:
