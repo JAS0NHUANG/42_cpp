@@ -3,20 +3,21 @@
 # include "Animal.hpp"
 
 Animal::Animal( void ) {
-	std::cout << "Animal default constructor called\n";
+	std::cout << "👾 Animal default constructor called\n";
+	this->type = "Animal";
 };
 
 Animal::~Animal( void ) {
-	std::cout << "Animal destructor called\n";
+	std::cout << "👾 Animal destructor called\n";
 };
 
 Animal::Animal( const Animal &toCopy ) {
-	std::cout << "Animal copy constructor called\n";
+	std::cout << "👾 Animal copy constructor called\n";
 	*this = toCopy;
 };
 
 Animal	&Animal::operator=( const Animal &toAssign ) {
-	std::cout << "Animal copy assignment overload called\n";
+	std::cout << "👾 Animal copy assignment overload called\n";
 	this->type = toAssign.type;
 	return (*this);
 };
@@ -28,5 +29,5 @@ const std::string	Animal::getType( void ) const {
 
 // member function
 void	Animal::makeSound( void ) const {
-	std::cout << "(Animal sound~~~)\n";
+	std::cout << "👾 Animal sound~~~\n";
 };

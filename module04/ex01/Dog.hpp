@@ -4,17 +4,22 @@
 # include <string>
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class	Dog : public Animal {
 	public:
 		Dog( void );
+		Dog( std::string name );
 		~Dog( void );
 		Dog( const Dog &toCopy );
 		Dog	&operator=( const Dog &toAssign);
-		Dog( std::string name );
 
 		// member function
 		void	makeSound( void ) const;
+
+	private:
+		std::string name;
+		Brain*	dogBrain;
 };
 
 #endif

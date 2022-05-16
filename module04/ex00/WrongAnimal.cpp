@@ -4,6 +4,7 @@
 
 WrongAnimal::WrongAnimal( void ) {
 	std::cout << "WrongAnimal default constructor called\n";
+	this->type = "WrongAnimal";
 };
 
 WrongAnimal::~WrongAnimal( void ) {

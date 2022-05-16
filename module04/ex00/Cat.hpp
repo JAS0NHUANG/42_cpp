@@ -8,13 +8,16 @@
 class	Cat : public Animal {
 	public:
 		Cat( void );
+		Cat( std::string name );
 		~Cat( void );
 		Cat( const Cat &toCopy );
 		Cat	&operator=( const Cat &toAssign);
-		Cat( std::string name );
 
 		// member function
 		void	makeSound( void ) const;
+
+	private:
+		std::string	name;
 };
 
 #endif

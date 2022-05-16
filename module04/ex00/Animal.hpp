@@ -14,6 +14,7 @@ class	Animal {
 		const std::string	getType( void ) const;
 
 		// member functions
+		// use virtual for runtime polymorphism
 		virtual void	makeSound( void ) const;
 
 	protected:
