@@ -16,6 +16,7 @@ class	Dog : public Animal {
 
 		// member function
 		void	makeSound( void ) const;
+		void	printIdeas( void ) const;
 
 	private:
 		std::string name;

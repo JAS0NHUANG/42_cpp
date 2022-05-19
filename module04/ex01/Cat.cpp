@@ -48,3 +48,11 @@ void	Cat::makeSound( void ) const {
 	std::cout << "😺 " << this->type << \
 		" makes no barking sound but miaouuuuuuu~~\n";
 };
+
+void	Cat::addIdea( std::string idea ) {
+	this->catBrain->addIdea( idea );
+}
+
+void	Cat::printIdeas( void ) const {
+	this->catBrain->printIdeas();
+}

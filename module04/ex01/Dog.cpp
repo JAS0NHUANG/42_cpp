@@ -40,3 +40,7 @@ Dog::Dog( std::string name ) : Animal() {
 void	Dog::makeSound( void ) const {
 	std::cout << "🐶 " << this->type << " makes a barking sound!\n";
 };
+
+void	Dog::printIdeas( void ) const {
+	this->dogBrain->printIdeas();
+}

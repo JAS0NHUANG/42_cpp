@@ -23,6 +23,31 @@ int	main() {
 	delete(j);
 	delete(i);
 
+	std::cout << "~~~~~~Animal array~~~~~~\n";
+
+	const	Animal* animals[100];
+
+	for (int i = 0; i < 100; i++) {
+		std::cout << i << std::endl;
+		if (i < 50) {
+			animals[i] = new Dog();
+		} else {
+			animals[i] = new Cat();
+		}
+	}
+
+	for (int i = 0; i < 100; i++) {
+		std::cout << animals[i]->getType() << " " << std::endl;
+		animals[i]->makeSound();
+		animals[i]->printIdeas();
+	}
+
+	Cat	kitty;
+	kitty.addIdea("abc");
+	kitty.addIdea("def");
+	kitty.printIdeas();
+
+
 	std::cout << "~~~~~~WrongAnimal test~~~~~~\n";
 
 	const WrongAnimal* k = new WrongCat();
