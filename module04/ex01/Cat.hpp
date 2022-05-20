@@ -16,6 +16,8 @@ class	Cat : public Animal {
 
 		// member function
 		void	makeSound( void ) const;
+		void	addIdea( std::string idea);
+		void	printIdeas( void ) const;
 
 	private:
 		std::string	name;

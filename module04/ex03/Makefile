@@ -22,6 +22,12 @@ DEBUG		=	-g3 -O0
 # **************************************************************************** #
 SRCS		=	main.cpp \
 				AMateria.cpp \
+				Animal.cpp \
+				Dog.cpp \
+				Cat.cpp \
+				WrongAnimal.cpp \
+				WrongCat.cpp \
+				Brain.cpp \
 
 # **************************************************************************** #
 #       LIBRARIES                                                              #
