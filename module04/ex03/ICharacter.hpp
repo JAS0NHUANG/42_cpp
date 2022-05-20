@@ -1,9 +1,9 @@
 #ifndef _ICHARACTER_HPP_
-# define _ICHARACTER_HPP_
+#define _ICHARACTER_HPP_
 
-# include <string>
+#include <string>
 
-# include "AMateria.hpp"
+class AMateria;
 
 class ICharacter {
 	public:

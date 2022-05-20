@@ -6,13 +6,29 @@
 
 Character::Character(void) {
 	std::cout << "Character default constructor called\n";
+	for (int i = 0; i < 4; i++) {
+		this->_inventory[i] = NULL;
+	}
 }
 
-~Character(void) {
+Character::Character(std::string name) {
+	std::cout << "Character constructor with parameter called\n";
+	this->_name = name;
+	for (int i = 0; i < 4; i++) {
+		this->_inventory[i] = NULL;
+	}
+}
+
+Character::~Character(void) {
 	std::cout << "Character destructor called\n";
+	int	i = 0;
+	while (this->_inventory[i] != NULL) {
+		delete this->_inventory[i];
+		i++;
+	}
 }
 
-Character(const Character &toCopy) {
+Character::Character(const Character &toCopy) {
 	std::cout << "Character copy constructor called\n";
 	int	i = 0;
 	while (toCopy._inventory[i] && i < 4) {
@@ -21,7 +37,7 @@ Character(const Character &toCopy) {
 	}
 }
 
-Character &operator=(const Character &toAssign) {
+Character &Character::operator=(const Character &toAssign) {
 	std::cout << "Character copy assignment overload called\n";
 	int	i = 0;
 	while (toAssign._inventory[i] && i < 4) {
@@ -32,14 +48,18 @@ Character &operator=(const Character &toAssign) {
 }
 
 // getter / setter
-std::string const &getName(void) const {
+std::string const &Character::getName(void) const {
 	return (this->_name);
 }
 
+AMateria* Character::getMateria(int idx){
+	return this->_inventory[idx];
+};
+
 // member functions
-void	equip(AMateria *m) {
+void	Character::equip(AMateria *m) {
 	int	i = 0;
-	while (toAssign._inventory[i] && i < 4) {
+	while (this->_inventory[i] && i < 4) {
 		i++;
 	}
 	if (i != 4) {
@@ -49,8 +69,10 @@ void	equip(AMateria *m) {
 	}
 }
 
-void	unequip(int idx) {
+void	Character::unequip(int idx) {
 	this->_inventory[idx] = NULL;
 }
-void	use(int idx, const ICharacter &target) {
+
+void	Character::use(int idx, ICharacter &target) {
+	this->_inventory[idx]->use(target);
 }

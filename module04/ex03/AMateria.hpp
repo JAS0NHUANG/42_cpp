@@ -1,5 +1,5 @@
-#ifndef _AMATERIA_HPP_
-# define _AMATERIA_HPP_
+#ifndef MODULE04_EX03_AMATERIA_HPP_
+#define MODULE04_EX03_AMATERIA_HPP_
 
 # include <string>
 # include "ICharacter.hpp"
@@ -10,15 +10,15 @@ class AMateria {
 
 	public:
 		AMateria(void);
-		AMateria(std::string const& type);
-		~AMateria(void);
-		AMateria(AMateria &toCopy);
-		AMateria &operator=(AMateria &toAssign);
+		explicit AMateria(std::string const& type);
+		virtual	~AMateria(void);
+		AMateria(const AMateria& toCopy);
+		AMateria &operator=(const AMateria& toAssign);
 
-		std::string const & getType() const; //Returns the materia type
+		std::string const & getType(void) const; //Returns the materia type
 
-		virtual AMateria* clone() const = 0;
+		virtual AMateria* clone(void) const = 0;
 		virtual void use(ICharacter& target);
 };
 
-#endif
+#endif // MODULE04_EX03_AMATERIA_HPP_
