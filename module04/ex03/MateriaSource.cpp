@@ -14,6 +14,11 @@ MateriaSource::MateriaSource(void) {
 
 MateriaSource::~MateriaSource(void) {
 	std::cout << "MateriaSource destructor called\n";
+	for (int i = 0; i < 4; i++) {
+		if (this->_source[i] != NULL) {
+			delete (this->_source[i]);
+		}
+	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &toCopy) {

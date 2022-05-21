@@ -5,20 +5,20 @@
 #include "Cure.hpp"
 
 Cure::Cure(void) : AMateria("cure") {
-	std::cout << "Cure default constructor called\n";
+	std::cout << "🩸 Cure default constructor called\n";
 }
 
 Cure::~Cure(void) {
-	std::cout << "Cure destructor called\n";
+	std::cout << "🩸 Cure destructor called\n";
 }
 
 Cure::Cure(Cure const &toCopy) {
-	std::cout << "Cure copy constructor called\n";
+	std::cout << "🩸 Cure copy constructor called\n";
 	*this = toCopy;
 }
 
 Cure &Cure::operator=(Cure const& toAssign){
-	std::cout << "Cure copy assignment overload called\n";
+	std::cout << "🩸 Cure copy assignment overload called\n";
 	this->type = toAssign.type;
 	return (*this);
 }

@@ -70,6 +70,7 @@ void	Character::equip(AMateria *m) {
 }
 
 void	Character::unequip(int idx) {
+	std::cout << "Unequip " << this->_inventory[idx]->getType() << "\n";
 	this->_inventory[idx] = NULL;
 }
 
