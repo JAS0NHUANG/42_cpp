@@ -5,14 +5,14 @@
 #include <iostream>
 
 Character::Character(void) {
-	std::cout << "Character default constructor called\n";
+	std::cout << "🧙 Character default constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
 }
 
 Character::Character(std::string name) {
-	std::cout << "Character constructor with parameter called\n";
+	std::cout << "🧙 Character constructor with parameter called\n";
 	this->_name = name;
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
@@ -20,7 +20,7 @@ Character::Character(std::string name) {
 }
 
 Character::~Character(void) {
-	std::cout << "Character destructor called\n";
+	std::cout << "🧙 Character destructor called\n";
 	int	i = 0;
 	while (this->_inventory[i] != NULL) {
 		delete this->_inventory[i];
@@ -29,7 +29,7 @@ Character::~Character(void) {
 }
 
 Character::Character(const Character &toCopy) {
-	std::cout << "Character copy constructor called\n";
+	std::cout << "🧙 Character copy constructor called\n";
 	int	i = 0;
 	while (toCopy._inventory[i] && i < 4) {
 		this->_inventory[i] = toCopy._inventory[i];
@@ -38,7 +38,7 @@ Character::Character(const Character &toCopy) {
 }
 
 Character &Character::operator=(const Character &toAssign) {
-	std::cout << "Character copy assignment overload called\n";
+	std::cout << "🧙 Character copy assignment overload called\n";
 	int	i = 0;
 	while (toAssign._inventory[i] && i < 4) {
 		this->_inventory[i] = toAssign._inventory[i];

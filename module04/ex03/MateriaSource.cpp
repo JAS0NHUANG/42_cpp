@@ -6,14 +6,14 @@
 #include "Cure.hpp"
 
 MateriaSource::MateriaSource(void) {
-	std::cout << "MateriaSource default constructor called\n";
+	std::cout << "🌊 MateriaSource default constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		this->_source[i] = NULL;
 	}
 }
 
 MateriaSource::~MateriaSource(void) {
-	std::cout << "MateriaSource destructor called\n";
+	std::cout << "🌊 MateriaSource destructor called\n";
 	for (int i = 0; i < 4; i++) {
 		if (this->_source[i] != NULL) {
 			delete (this->_source[i]);
@@ -22,7 +22,7 @@ MateriaSource::~MateriaSource(void) {
 }
 
 MateriaSource::MateriaSource(const MateriaSource &toCopy) {
-	std::cout << "MateriaSource copy constructor called\n";
+	std::cout << "🌊 MateriaSource copy constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		if (toCopy._source[i]) {
 			this->_source[i] = toCopy._source[i]->clone();
@@ -30,7 +30,7 @@ MateriaSource::MateriaSource(const MateriaSource &toCopy) {
 	}
 }
 MateriaSource &MateriaSource::operator=(const MateriaSource &toAssign) {
-	std::cout << "MateriaSource copy assignment overload called\n";
+	std::cout << "🌊 MateriaSource copy assignment overload called\n";
 	for (int i = 0; i < 4; i++) {
 		if (toAssign._source[i]) {
 			this->_source[i] = toAssign._source[i]->clone();
