@@ -50,6 +50,7 @@ void	Cat::makeSound( void ) const {
 };
 
 void	Cat::addIdea( std::string idea ) {
+	std::cout << "add \"" << idea << "\" into cat's brain\n";
 	this->catBrain->addIdea( idea );
 }
 

@@ -41,6 +41,16 @@ void	Dog::makeSound( void ) const {
 	std::cout << "🐶 " << this->type << " makes a barking sound!\n";
 };
 
+void	Dog::addIdea(std::string idea) {
+	std::cout << "add \"" << idea << "\" into dog's brain\n";
+	this->dogBrain->addIdea(idea);
+}
+
 void	Dog::printIdeas( void ) const {
+	if (this->dogBrain->ideas[0].empty()) {
+		std::cout << "Dog has no idea\n";
+		return  ;
+	}
+	std::cout << "Dog's idea: ";
 	this->dogBrain->printIdeas();
 }

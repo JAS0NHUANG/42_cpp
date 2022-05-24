@@ -17,6 +17,7 @@ class	Animal {
 		// use virtual for runtime polymorphism
 		virtual void	makeSound( void ) const;
 		virtual void	printIdeas( void ) const;
+		virtual void	addIdea(std::string idea);
 
 	protected:
 		std::string type;

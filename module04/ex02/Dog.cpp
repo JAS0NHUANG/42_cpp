@@ -4,7 +4,7 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-Dog::Dog( void ) : Animal() {
+Dog::Dog( void ) : AAnimal() {
 	std::cout << "🐶 Dog default constructor called\n";
 	this->type = "Dog";
 	this->name = "";
@@ -16,7 +16,7 @@ Dog::~Dog( void ) {
 	delete this->dogBrain;
 };
 
-Dog::Dog( const Dog &toCopy ) : Animal() {
+Dog::Dog( const Dog &toCopy ) : AAnimal() {
 	std::cout << "🐶 Dog copy constructor called\n";
 	this->dogBrain = new Brain();
 	*this = toCopy;
@@ -30,13 +30,31 @@ Dog	&Dog::operator=( const Dog &toAssign ) {
 	return (*this);
 };
 
-Dog::Dog( std::string name ) : Animal() {
+Dog::Dog( std::string name ) : AAnimal() {
 	std::cout << "🐶 Dog constructor with parameter called\n";
 	this->name = name;
 	this->type = name.append(" Dog");
 	this->dogBrain = new Brain();
 };
 
+const std::string	Dog::getType( void ) const {
+	return (this->type);
+}
+
 void	Dog::makeSound( void ) const {
 	std::cout << "🐶 " << this->type << " makes a barking sound!\n";
 };
+
+void	Dog::addIdea(std::string idea) {
+	std::cout << "add \"" << idea << "\" into dog's brain\n";
+	this->dogBrain->addIdea(idea);
+}
+
+void	Dog::printIdeas( void ) const {
+	if (this->dogBrain->ideas[0].empty()) {
+		std::cout << "Dog has no idea\n";
+		return  ;
+	}
+	std::cout << "Dog's idea: ";
+	this->dogBrain->printIdeas();
+}

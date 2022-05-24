@@ -12,6 +12,9 @@ class	Brain {
 		Brain	&operator=( const Brain &toAssign);
 
 		std::string	ideas[100];
+
+		void	printIdeas( void ) const;
+		void	addIdea( std::string idea );
 };
 
 #endif

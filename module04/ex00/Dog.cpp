@@ -20,14 +20,7 @@ Dog::Dog( const Dog &toCopy ) : Animal() {
 Dog	&Dog::operator=( const Dog &toAssign ) {
 	std::cout << "🐶 Dog copy assignment overload called\n";
 	this->type = toAssign.type;
-	this->name = toAssign.name;
 	return (*this);
-};
-
-Dog::Dog( std::string name ) : Animal() {
-	std::cout << "🐶 Dog constructor with parameter called\n";
-	this->name = name;
-	this->type = name.append(" Dog");
 };
 
 void	Dog::makeSound( void ) const {

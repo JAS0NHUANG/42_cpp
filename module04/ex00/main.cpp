@@ -26,34 +26,34 @@ int	main() {
 	std::cout << std::endl;
 
 	delete meta;
+	std::cout << std::endl;
 	delete j;
+	std::cout << std::endl;
 	delete i;
-	std::cout << std::endl;
-
-	std::cout << "~~~~~~Cat / Dog with names~~~~~~\n";
-	const Animal* a = new Dog("Shiba");
-	std::cout << std::endl;
-	const Animal* b = new Cat("Copy");
-	std::cout << std::endl;
-
-	std::cout << a->getType() << " " << std::endl;
-	std::cout << b->getType() << " " << std::endl;
-	std::cout << std::endl;
-
-	delete a;
-	delete b;
 	std::cout << std::endl;
 
 	std::cout << "~~~~~~WrongAnimal test~~~~~~\n";
 	const WrongAnimal* k = new WrongCat();
+	std::cout << std::endl;
 	const WrongAnimal* l = new WrongAnimal();
 	std::cout << std::endl;
 
-	std::cout << k->getType() << " " << std::endl;
-	std::cout << l->getType() << " " << std::endl;
+	std::cout << "WrongCat addr: " << k << std::endl;
+	std::cout << "WrongCat type: " << k->getType() << " " << std::endl;
+	std::cout << "WrongAnimal addr: " << l << std::endl;
+	std::cout << "WrongAnimal type: " << l->getType() << " " << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "WrongCat makeSound: ";
 	k->makeSound();
+	std::cout << "WrongAnimal makeSound: ";
 	l->makeSound();
+	std::cout << std::endl;
 
 	delete k;
+	std::cout << std::endl;
 	delete l;
+	std::cout << std::endl;
+
+	return (0);
 }

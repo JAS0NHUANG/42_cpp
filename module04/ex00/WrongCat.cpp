@@ -23,11 +23,6 @@ WrongCat	&WrongCat::operator=( const WrongCat &toAssign ) {
 	return (*this);
 };
 
-WrongCat::WrongCat( std::string name ) : WrongAnimal() {
-	std::cout << "WrongCat constructor with parameter called\n";
-	this->type = name;
-};
-
 void	WrongCat::makeSound( void ) const {
 	std::cout << this->type << " makes no barking sound but miaouuuuuuu~~\n";
 };

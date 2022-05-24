@@ -6,7 +6,7 @@
 class	WrongAnimal {
 	public:
 		WrongAnimal( void );
-		~WrongAnimal( void );
+		virtual ~WrongAnimal( void );
 		WrongAnimal( const WrongAnimal &toCopy);
 		WrongAnimal	&operator=( const WrongAnimal &toAssign);
 

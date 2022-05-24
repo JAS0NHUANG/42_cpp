@@ -7,17 +7,13 @@
 
 class	Cat : public Animal {
 	public:
-		Cat( void );
-		Cat( std::string name );
-		~Cat( void );
-		Cat( const Cat &toCopy );
-		Cat	&operator=( const Cat &toAssign);
+		Cat(void);
+		~Cat(void);
+		Cat(const Cat &toCopy);
+		Cat	&operator=(const Cat &toAssign);
 
 		// member function
-		void	makeSound( void ) const;
-
-	private:
-		std::string	name;
+		void	makeSound(void) const;
 };
 
 #endif

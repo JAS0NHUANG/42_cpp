@@ -8,7 +8,7 @@
 
 int	main() {
 	std::cout << "~~~~~~Subject test~~~~~~\n";
-	const Animal* meta = new Animal();
+	const AAnimal* test = new AAnimal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
@@ -17,43 +17,56 @@ int	main() {
 
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
-	meta->makeSound();
 
-	delete(meta);
+	i->printIdeas();
+	j->printIdeas();
+
+	/* should not have any leaks */
 	delete(j);
 	delete(i);
+	std::cout << std::endl;
 
 	std::cout << "~~~~~~Animal array~~~~~~\n";
+	std::cout << std::endl;
 
-	const	Animal* animals[100];
+	int	nbr = 1000;
+	Animal* animals[nbr];
 
-	for (int i = 0; i < 100; i++) {
+	std::cout << "------create dogs and cats-------\n" <<  std::endl;
+	for (int i = 0; i < nbr; i++) {
 		std::cout << i << std::endl;
-		if (i < 50) {
+		if (i < (nbr / 2)) {
 			animals[i] = new Dog();
 		} else {
 			animals[i] = new Cat();
 		}
 	}
+	std::cout << std::endl;
 
-	for (int i = 0; i < 100; i++) {
-		std::cout << animals[i]->getType() << " " << std::endl;
+	std::cout << "-------Dogs and cats making sound.-------\n" <<  std::endl;
+	for (int i = 0; i < nbr; i++) {
+		std::cout << "Animal type: " << \
+			animals[i]->getType() << " " << std::endl;
 		animals[i]->makeSound();
+		animals[i]->addIdea("idea1");
+		animals[i]->addIdea("idea2");
 		animals[i]->printIdeas();
 	}
+	std::cout << std::endl;
 
-	Cat	kitty;
-	kitty.addIdea("abc");
-	kitty.addIdea("def");
+	std::cout << "-------Delete dogs and cats.-------\n";
+	for (int i = 0; i < nbr; i++) {
+		delete animals[i];
+	}
+	std::cout << std::endl;
+
+	std::cout << "~~~~~~Kitty and her brain.~~~~~~\n";
+	Cat kitty;
+	std::cout << std::endl;
+
+	kitty.addIdea("kitty idea 1");
+	kitty.addIdea("kitty idea 2");
 	kitty.printIdeas();
+	std::cout << std::endl;
 
-
-	std::cout << "~~~~~~WrongAnimal test~~~~~~\n";
-
-	const WrongAnimal* k = new WrongCat();
-
-	std::cout << k->getType() << " " << std::endl;
-	k->makeSound();
-
-	delete(k);
 }

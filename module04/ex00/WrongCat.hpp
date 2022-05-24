@@ -7,14 +7,13 @@
 
 class	WrongCat : public WrongAnimal {
 	public:
-		WrongCat( void );
-		~WrongCat( void );
-		WrongCat( const WrongCat &toCopy );
-		WrongCat	&operator=( const WrongCat &toAssign);
-		WrongCat( std::string name );
+		WrongCat(void);
+		~WrongCat(void);
+		WrongCat(const WrongCat &toCopy);
+		WrongCat	&operator=(const WrongCat &toAssign);
 
 		// member function
-		void	makeSound( void ) const;
+		void	makeSound(void) const;
 };
 
 #endif

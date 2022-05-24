@@ -3,10 +3,10 @@
 
 # include <string>
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class	Cat : public Animal {
+class	Cat : public AAnimal {
 	public:
 		Cat( void );
 		Cat( std::string name );
@@ -14,8 +14,13 @@ class	Cat : public Animal {
 		Cat( const Cat &toCopy );
 		Cat	&operator=( const Cat &toAssign);
 
+		// getter
+		const std::string	getType( void ) const;
+
 		// member function
 		void	makeSound( void ) const;
+		void	addIdea( std::string idea);
+		void	printIdeas( void ) const;
 
 	private:
 		std::string	name;

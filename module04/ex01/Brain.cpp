@@ -33,8 +33,16 @@ void	Brain::addIdea(std::string idea) {
 
 void	Brain::printIdeas( void ) const {
 	int i = 0;
+	if (this->ideas[i].empty()) {
+		std::cout << "I have no ideas!!\n";
+	}
 	while (!this->ideas[i].empty()) {
-		std::cout << this->ideas[i] << "\n";
+		std::cout << this->ideas[i];
+		if (this->ideas[i + 1].empty()) {
+			std::cout << "\n";
+		} else {
+			std::cout << ", ";
+		}
 		i++;
 	}
 }
