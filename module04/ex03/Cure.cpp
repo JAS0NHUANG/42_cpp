@@ -4,21 +4,27 @@
 #include "ICharacter.hpp"
 #include "Cure.hpp"
 
+#ifndef VERBOSE
+# define VERBOSE 0
+#else
+# define VERBOSE 1
+#endif
+
 Cure::Cure(void) : AMateria("cure") {
-	std::cout << "🩸 Cure default constructor called\n";
+	VERBOSE && std::cout << "🩸 Cure default constructor called\n";
 }
 
 Cure::~Cure(void) {
-	std::cout << "🩸 Cure destructor called\n";
+	VERBOSE && std::cout << "🩸 Cure destructor called\n";
 }
 
 Cure::Cure(Cure const &toCopy) {
-	std::cout << "🩸 Cure copy constructor called\n";
+	VERBOSE && std::cout << "🩸 Cure copy constructor called\n";
 	*this = toCopy;
 }
 
 Cure &Cure::operator=(Cure const& toAssign){
-	std::cout << "🩸 Cure copy assignment overload called\n";
+	VERBOSE && std::cout << "🩸 Cure copy assignment overload called\n";
 	this->type = toAssign.type;
 	return (*this);
 }
@@ -30,5 +36,5 @@ Cure* Cure::clone(void) const {
 }
 
 void	Cure::use(ICharacter& target) {
-	std::cout << "* heals " << target.getName() << "'swounds *\n";
+	std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

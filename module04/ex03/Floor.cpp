@@ -1,15 +1,21 @@
 #include <iostream>
 #include "Floor.hpp"
 
+#ifndef VERBOSE
+# define VERBOSE 0
+#else
+# define VERBOSE 1
+#endif
+
 Floor::Floor(void) {
-	std::cout << "🪧 Floor default constructor called\n";
+	VERBOSE && std::cout << "🪧 Floor default constructor called\n";
 	for (int i = 0; i < 100; i++) {
 		this->_materiaOnTheFloor[i] = NULL;
 	}
 }
 
 Floor::~Floor(void) {
-	std::cout << "🪧 Floor destructor called\n";
+	VERBOSE && std::cout << "🪧 Floor destructor called\n";
 	for (int i = 0; i < 100; i++) {
 		if (this->_materiaOnTheFloor[i] != NULL) {
 			delete (this->_materiaOnTheFloor[i]);
@@ -18,7 +24,7 @@ Floor::~Floor(void) {
 }
 
 Floor::Floor(const Floor &toCopy) {
-	std::cout << "🪧 Floor copy constructor called\n";
+	VERBOSE && std::cout << "🪧 Floor copy constructor called\n";
 	for (int i = 0; i < 100; i++) {
 		if (toCopy._materiaOnTheFloor[i] != NULL) {
 			this->_materiaOnTheFloor[i] = toCopy._materiaOnTheFloor[i]->clone();
@@ -27,7 +33,7 @@ Floor::Floor(const Floor &toCopy) {
 }
 
 Floor	&Floor::operator=(const Floor &toAssign) {
-	std::cout << "🪧 Floor copy assignment overload called\n";
+	VERBOSE && std::cout << "🪧 Floor copy assignment overload called\n";
 	for (int i = 0; i < 100; i++) {
 		if (toAssign._materiaOnTheFloor[i] != NULL) {
 			this->_materiaOnTheFloor[i] = toAssign._materiaOnTheFloor[i]->clone();

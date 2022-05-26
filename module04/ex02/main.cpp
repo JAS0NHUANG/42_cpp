@@ -8,7 +8,7 @@
 
 int	main() {
 	std::cout << "~~~~~~Subject test~~~~~~\n";
-	// AAnimal abstract class is not instanciable 
+	// AAnimal abstract class is not instanciable
 	/*
 	const AAnimal* test = new AAnimal();
 	*/
@@ -63,13 +63,18 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	std::cout << "~~~~~~Kitty and her brain.~~~~~~\n";
+	std::cout << "~~~~~~Kitty and Cutee's brains~~~~~~\n";
+	std::cout << "(deep copy test)\n";
 	Cat kitty;
 	std::cout << std::endl;
 
 	kitty.addIdea("kitty idea 1");
 	kitty.addIdea("kitty idea 2");
-	kitty.printIdeas();
 	std::cout << std::endl;
 
+	Cat cutee(kitty);
+	cutee.addIdea("cutee idea 1");
+	kitty.printIdeas();
+	cutee.printIdeas();
+	std::cout << std::endl;
 }

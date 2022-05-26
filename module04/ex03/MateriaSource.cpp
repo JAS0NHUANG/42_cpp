@@ -5,15 +5,21 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+#ifndef VERBOSE
+# define VERBOSE 0
+#else
+# define VERBOSE 1
+#endif
+
 MateriaSource::MateriaSource(void) {
-	std::cout << "🌊 MateriaSource default constructor called\n";
+	VERBOSE && std::cout << "🌊 MateriaSource default constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		this->_source[i] = NULL;
 	}
 }
 
 MateriaSource::~MateriaSource(void) {
-	std::cout << "🌊 MateriaSource destructor called\n";
+	VERBOSE && std::cout << "🌊 MateriaSource destructor called\n";
 	for (int i = 0; i < 4; i++) {
 		if (this->_source[i] != NULL) {
 			delete (this->_source[i]);
@@ -22,7 +28,7 @@ MateriaSource::~MateriaSource(void) {
 }
 
 MateriaSource::MateriaSource(const MateriaSource &toCopy) {
-	std::cout << "🌊 MateriaSource copy constructor called\n";
+	VERBOSE && std::cout << "🌊 MateriaSource copy constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		if (toCopy._source[i]) {
 			this->_source[i] = toCopy._source[i]->clone();
@@ -30,7 +36,7 @@ MateriaSource::MateriaSource(const MateriaSource &toCopy) {
 	}
 }
 MateriaSource &MateriaSource::operator=(const MateriaSource &toAssign) {
-	std::cout << "🌊 MateriaSource copy assignment overload called\n";
+	VERBOSE && std::cout << "🌊 MateriaSource copy assignment overload called\n";
 	for (int i = 0; i < 4; i++) {
 		if (toAssign._source[i]) {
 			this->_source[i] = toAssign._source[i]->clone();
@@ -43,10 +49,11 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &toAssign) {
 void	MateriaSource::learnMateria(AMateria *toLearn) {
 	for (int i = 0; i < 4; i++) {
 		if (this->_source[i] == NULL) {
-			this->_source[i] = toLearn->clone();
-			break ;
+			this->_source[i] = toLearn;
+			return ;
 		}
 	}
+	std::cout << "Can't learn any materia~~\n";
 }
 
 AMateria* MateriaSource::createMateria(std::string const &type) {

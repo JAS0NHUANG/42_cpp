@@ -1,18 +1,23 @@
-// Copyright 2022 jahuang
 #include "Character.hpp"
 #include "AMateria.hpp"
+
+#ifndef VERBOSE
+# define VERBOSE 0
+#else
+# define VERBOSE 1
+#endif
 
 #include <iostream>
 
 Character::Character(void) {
-	std::cout << "🧙 Character default constructor called\n";
+	VERBOSE && std::cout << "🧙 Character default constructor called\n";
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
 }
 
 Character::Character(std::string name) {
-	std::cout << "🧙 Character constructor with parameter called\n";
+	VERBOSE && std::cout << "🧙 Character constructor with parameter called\n";
 	this->_name = name;
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
@@ -20,16 +25,16 @@ Character::Character(std::string name) {
 }
 
 Character::~Character(void) {
-	std::cout << "🧙 Character destructor called\n";
-	int	i = 0;
-	while (this->_inventory[i] != NULL) {
-		delete this->_inventory[i];
-		i++;
+	VERBOSE && std::cout << "🧙 Character destructor called\n";
+	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL) {
+			delete this->_inventory[i];
+		}
 	}
 }
 
 Character::Character(const Character &toCopy) {
-	std::cout << "🧙 Character copy constructor called\n";
+	VERBOSE && std::cout << "🧙 Character copy constructor called\n";
 	int	i = 0;
 	while (toCopy._inventory[i] && i < 4) {
 		this->_inventory[i] = toCopy._inventory[i];
@@ -38,7 +43,7 @@ Character::Character(const Character &toCopy) {
 }
 
 Character &Character::operator=(const Character &toAssign) {
-	std::cout << "🧙 Character copy assignment overload called\n";
+	VERBOSE && std::cout << "🧙 Character copy assignment overload called\n";
 	int	i = 0;
 	while (toAssign._inventory[i] && i < 4) {
 		this->_inventory[i] = toAssign._inventory[i];
@@ -58,22 +63,35 @@ AMateria* Character::getMateria(int idx){
 
 // member functions
 void	Character::equip(AMateria *m) {
-	int	i = 0;
-	while (this->_inventory[i] && i < 4) {
-		i++;
+	for (int i = 0; i < 4; i++) {
+		if (!this->_inventory[i]) {
+			this->_inventory[i] = m;
+			return;
+		}
 	}
-	if (i != 4) {
-		this->_inventory[i] = m;
-	} else {
-		std::cout << "Inventory is full. Can't equip another spell.\n";
-	}
+	std::cout << "Inventory is full. Can't equip another spell.\n";
 }
 
 void	Character::unequip(int idx) {
-	std::cout << "Unequip " << this->_inventory[idx]->getType() << "\n";
+	if (idx < 0 || idx > 3) {
+		std::cout << "Not a valid index!\n";
+		return ;
+	}
+	if (!this->_inventory[idx]) {
+		std::cout << "No Materia in this slot!\n";
+		return ;
+	}
 	this->_inventory[idx] = NULL;
 }
 
 void	Character::use(int idx, ICharacter &target) {
+	if (idx < 0 || idx > 3) {
+		std::cout << "Not a valid index!\n";
+		return ;
+	}
+	if (!this->_inventory[idx]) {
+		std::cout << "No Materia in this slot!\n";
+		return ;
+	}
 	this->_inventory[idx]->use(target);
 }

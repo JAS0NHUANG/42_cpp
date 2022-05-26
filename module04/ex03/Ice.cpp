@@ -3,21 +3,27 @@
 #include "AMateria.hpp"
 #include "Ice.hpp"
 
+#ifndef VERBOSE
+# define VERBOSE 0
+#else
+# define VERBOSE 1
+#endif
+
 Ice::Ice(void) : AMateria("ice") {
-	std::cout << "🍦 Ice default constructor called\n";
+	VERBOSE && std::cout << "🍦 Ice default constructor called\n";
 }
 
 Ice::~Ice(void) {
-	std::cout << "🍦 Ice destructor called\n";
+	VERBOSE && std::cout << "🍦 Ice destructor called\n";
 }
 
 Ice::Ice(Ice const &toCopy) : AMateria("ice") {
-	std::cout << "🍦 Ice copy constructor called\n";
+	VERBOSE && std::cout << "🍦 Ice copy constructor called\n";
 	*this = toCopy;
 }
 
 Ice &Ice::operator=(Ice const&){
-	std::cout << "🍦 Ice copy assignment overload called\n";
+	VERBOSE && std::cout << "🍦 Ice copy assignment overload called\n";
 	return (*this);
 }
 

@@ -8,10 +8,11 @@
 
 int	main() {
 	std::cout << "~~~~~~Subject test~~~~~~\n";
-	const AAnimal* test = new AAnimal();
+	const Animal* test = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
+	std::cout << test->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 
@@ -60,13 +61,18 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	std::cout << "~~~~~~Kitty and her brain.~~~~~~\n";
+	std::cout << "~~~~~~Kitty and Cutee's brains~~~~~~\n";
+	std::cout << "(deep copy test)\n";
 	Cat kitty;
 	std::cout << std::endl;
 
 	kitty.addIdea("kitty idea 1");
 	kitty.addIdea("kitty idea 2");
-	kitty.printIdeas();
 	std::cout << std::endl;
 
+	Cat cutee(kitty);
+	cutee.addIdea("cutee idea 1");
+	kitty.printIdeas();
+	cutee.printIdeas();
+	std::cout << std::endl;
 }
