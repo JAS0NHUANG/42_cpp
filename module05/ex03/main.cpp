@@ -10,6 +10,7 @@ int	main(){
 	std::cout << "------- b1 f1-------\n";
 	Bureaucrat b1("b1", 150);
 	Bureaucrat b2("b2", 1);
+	AForm* rrf;
 	ShrubberyCreationForm theForm = ShrubberyCreationForm("Nice Target");
 	RobotomyRequestForm roboForm = RobotomyRequestForm("Robo Target");
 	PresidentialPardonForm ppForm = PresidentialPardonForm("Pardon Target");
@@ -18,9 +19,12 @@ int	main(){
 	AForm	f1("f1", 150, 150);
 	AForm	f2("f2", 149, 149);
 	*/
+	rrf = new RobotomyRequestForm("Robo T");
 	std::cout << b1;
 	b1.signForm(theForm);
 	b1.executeForm(theForm);
+	b2.signForm(*rrf);
+	b2.executeForm(*rrf);
 
 	try {
 		b2.signForm(theForm);
