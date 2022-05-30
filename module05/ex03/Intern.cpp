@@ -46,6 +46,8 @@ Form*	Intern::makeForm(std::string formType, std::string target) const {
 	std::string formTypes[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	for (int i = 0; i < 3; i++) {
 		if (formTypes[i].compare(formType) == 0) {
+			std::cout << "Intern creates " << formType << " form.(target: " << \
+			target << ")\n";
 			return (this->*ft_ptr[i])(target);
 		}
 	}

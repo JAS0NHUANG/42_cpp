@@ -4,7 +4,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class RobotomyRequestForm : public AForm {
+class RobotomyRequestForm : public Form {
 	public:
 		// canonical
 		RobotomyRequestForm(void);

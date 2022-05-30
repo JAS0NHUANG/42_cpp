@@ -40,6 +40,19 @@ int	main(){
 	std::cout << b2 << "\n";
 	std::cout << "\n";
 
+	std::cout << "~~~~~~~ Bureaucrat on the heap  ~~~~~~~\n";
+	Bureaucrat* hb = new Bureaucrat("hb", 130);
+	std::cout << *hb;
+	try {
+		std::cout << "Try to downgrade hb:\n";	
+		hb->downgrade();
+	} catch (std::exception &e) {
+		std::cout << e.what();
+	}
+
+	delete hb;
+	std::cout << "\n";
+
 	std::cout << "~~~~~~~ instancialize with bad grade value ~~~~~~~\n";
 
 	try {

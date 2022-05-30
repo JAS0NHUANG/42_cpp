@@ -58,15 +58,16 @@ void	Form::setIsSigned(bool isSigned) {
 	this->_isSigned = isSigned;
 }
 
-
 // exception hendling
 class GradeTooHighException : public std::exception {
 public:
 	virtual const char* what() const throw();
 };
+
 const char* Form::GradeTooLowException::what() const throw() {
 		return ("the grade is too Low.\n");
 }
+
 const char* Form::GradeTooHighException::what() const throw() {
 		return ("the grade is too High.\n");
 }

@@ -8,17 +8,20 @@
 # define VERBOSE 1
 #endif
 
-Bureaucrat::Bureaucrat(void) : _name("Default Bureaucrat"), _grade(150) {
+Bureaucrat::Bureaucrat(void) :
+	_name("Default Bureaucrat"), _grade(150)
+{
 	VERBOSE && std::cout << "Bureaucrat default constructor called\n";
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
+	_name(name), _grade(grade)
+{
 	VERBOSE && std::cout << "Bureaucrat constructor with parameters called\n";
 	if (grade < 1)
 		throw	Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw	Bureaucrat::GradeTooLowException();
-	this->_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(void) {
@@ -31,8 +34,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& toCopy) {
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& toAssign) {
-	VERBOSE && std::cout << "Bureaucrat copy assignment operator overload called\n";
-	this->_name = toAssign._name;
+	VERBOSE && std::cout << "Bureaucrat assignment operator overload called\n";
 	this->_grade = toAssign._grade;
 	return (*this);
 }
@@ -43,17 +45,6 @@ std::string	Bureaucrat::getName(void) const {
 
 unsigned int	Bureaucrat::getGrade(void) const {
 	return (this->_grade);
-}
-
-void	Bureaucrat::setName(std::string name) {
-	this->_name = name;
-}
-void	Bureaucrat::setGrade(unsigned int grade) {
-	if (grade < 0)
-		throw	Bureaucrat::GradeTooHighException();
-	if (grade > 150)
-		throw	Bureaucrat::GradeTooLowException();
-	this->_grade = grade;
 }
 
 // exception handling
@@ -98,7 +89,6 @@ void	Bureaucrat::signForm(Form& f) {
 }
 
 // operator overload
-
 std::ostream	&operator<<(std::ostream& out, const Bureaucrat& b) {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".\n";
 	return (out);

@@ -1,7 +1,0 @@
-         (root)
-         /    \
-      (L)     (R)
-      / \     / \
-    (L) (R) (L) (R)
-
-(This is a geek tree!)

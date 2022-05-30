@@ -27,9 +27,9 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &toC
 PresidentialPardonForm::PresidentialPardonForm(
 	std::string target
 ) :
-	Form("SCF", 25, 5),
+	Form("PPF", 25, 5),
 	_target(target) {
-	VERBOSE && std::cout << "PresidentialPardonForm default constructor called\n";
+	VERBOSE && std::cout << "PresidentialPardonForm constructor with parameter called\n";
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &toAssign) {

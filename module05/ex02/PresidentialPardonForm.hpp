@@ -4,7 +4,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class PresidentialPardonForm : public AForm {
+class PresidentialPardonForm : public Form {
 	public:
 		// canonical
 		PresidentialPardonForm(void);

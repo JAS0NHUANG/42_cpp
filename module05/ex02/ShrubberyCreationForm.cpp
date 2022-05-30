@@ -10,7 +10,7 @@
 #endif
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) :
-	AForm("Default SCF", 145, 137),
+	Form("Default SCF", 145, 137),
 	_target("Default Target") {
 	VERBOSE && std::cout << "ShrubberyCreationForm default constructor called\n";
 }
@@ -20,7 +20,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &toCopy) :
-	AForm(toCopy.getName(), toCopy.getSignGrade(), toCopy.getExecGrade()), _target(toCopy.getTarget()) {
+	Form(toCopy.getName(), toCopy.getSignGrade(), toCopy.getExecGrade()), _target(toCopy.getTarget()) {
 	VERBOSE && std::cout << "ShrubberyCreationForm copy constructor called\n";
 	*this = toCopy;
 }
@@ -28,7 +28,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &toCopy
 ShrubberyCreationForm::ShrubberyCreationForm(
 	std::string target
 ) :
-	AForm("SCF", 145, 137),
+	Form("SCF", 145, 137),
 	_target(target) {
 	VERBOSE && std::cout << "ShrubberyCreationForm default constructor called\n";
 }
@@ -46,9 +46,9 @@ const std::string &ShrubberyCreationForm::getTarget(void) const {
 // member functions
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > this->getExecGrade())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (!this->getIsSigned())
-		throw AForm::FormUnsignedException();
+		throw Form::FormUnsignedException();
 	std::fstream file;
 	std::string	fileName = this->_target;
 	file.open(fileName.append("_shrubbery").c_str(), std::fstream::out);

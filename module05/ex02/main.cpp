@@ -7,40 +7,39 @@
 
 int	main(){
 	std::cout << "~~~~~~~ Basic tests ~~~~~~~\n";
-	std::cout << "------- b1 f1-------\n";
 	Bureaucrat b1("b1", 150);
 	Bureaucrat b2("b2", 1);
-	ShrubberyCreationForm theForm = ShrubberyCreationForm("Nice Target");
-	RobotomyRequestForm roboForm = RobotomyRequestForm("Robo Target");
-	PresidentialPardonForm ppForm = PresidentialPardonForm("Pardon Target");
 
-	/* AForm is abstract class. Not instanciable.
-	AForm	f1("f1", 150, 150);
-	AForm	f2("f2", 149, 149);
+	ShrubberyCreationForm scfForm = ShrubberyCreationForm("SCF_Target");
+	RobotomyRequestForm roboForm = RobotomyRequestForm("RRF_Target");
+	PresidentialPardonForm ppForm = PresidentialPardonForm("PPF_Target");
+
+	/* Form is an abstract class, can't be instatiate.
+	Form	f1("f1", 150, 150);
+	Form	f2("f2", 149, 149);
 	*/
+
 	std::cout << b1;
-	b1.signForm(theForm);
-	b1.executeForm(theForm);
+	b1.signForm(scfForm);
+	b1.executeForm(scfForm);
+	std::cout << "\n";
+
+	b2.signForm(scfForm);
+	b2.executeForm(scfForm);
+	std::cout << "\n";
+
+	b2.signForm(roboForm);
+	roboForm.execute(b2);
+	std::cout << "\n";
 
 	try {
-		b2.signForm(theForm);
-		b2.executeForm(theForm);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-
-	try {
+		b2.signForm(ppForm);
 		ppForm.execute(b2);
 	} catch (std::exception &e) {
 		std::cout << e.what();
 	}
-
-	try {
-		roboForm.execute(b2);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
 	std::cout << "\n";
+
 	try {
 		std::cout << "Try to downgrade b1:\n";
 		b1.downgrade();

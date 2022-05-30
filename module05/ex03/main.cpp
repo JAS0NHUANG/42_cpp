@@ -7,117 +7,46 @@
 #include "Intern.hpp"
 
 int	main(){
-	std::cout << "~~~~~~~ Basic tests ~~~~~~~\n";
-	std::cout << "------- b1 f1-------\n";
-	Bureaucrat b1("b1", 150);
-	Bureaucrat b2("b2", 1);
-	Form* rrf;
-	ShrubberyCreationForm theForm = ShrubberyCreationForm("Nice Target");
-	RobotomyRequestForm roboForm = RobotomyRequestForm("Robo Target");
-	PresidentialPardonForm ppForm = PresidentialPardonForm("Pardon Target");
-
-	std::cout << "\n\n Intern tests: \n";
-	Form* newForm;
-	Intern	newIntern;
-	newForm = newIntern.makeForm("robotomy request", "RRF target");
-
-	b1.signForm(*newForm);
-
-	delete newForm;
-
-	std::cout << "\n\n";
-
-	/* Form is abstract class. Not instanciable.
-	Form	f1("f1", 150, 150);
-	Form	f2("f2", 149, 149);
-	*/
-	rrf = new RobotomyRequestForm("Robo T");
+	std::cout << "~~~~~~~ Intern tests ~~~~~~~\n";
+	Bureaucrat b1("b1", 80);
+	Bureaucrat b2("b2", 25);
 	std::cout << b1;
-	b1.signForm(theForm);
-	b1.executeForm(theForm);
+	std::cout << b2;
+	std::cout << "\n";
+
+	Form*	rrf;
+	Intern	someRandomIntern;
+	rrf = someRandomIntern.makeForm("robotomy request", "RRF_Target");
+
+	b1.signForm(*rrf);
+	b1.executeForm(*rrf);
 	b2.signForm(*rrf);
 	b2.executeForm(*rrf);
 
-	try {
-		b2.signForm(theForm);
-		b2.executeForm(theForm);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-
-	try {
-		ppForm.execute(b2);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-
-	try {
-		roboForm.execute(b2);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-	std::cout << "\n";
-	try {
-		std::cout << "Try to downgrade b1:\n";
-		b1.downgrade();
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-	std::cout << "\n";
-
 	delete rrf;
-
-	/*
-	b1.signForm(f1);
-	std::cout << f1;
 	std::cout << "\n";
 
-	b1.signForm(f2);
-	std::cout << f2;
-	std::cout << "\n";
-	*/
+	Form*	scf;
+	scf = someRandomIntern.makeForm("shrubbery creation", "SCF_Target");
 
-	try {
-		std::cout << "Try to upgrade b1:\n";
-		b1.upgrade();
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
+	b1.signForm(*scf);
+	b1.executeForm(*scf);
+	b2.signForm(*scf);
+	b2.executeForm(*scf);
+
+	delete scf;
 	std::cout << "\n";
 
-	std::cout << b1;
+	Form*	ppf;
+	ppf = someRandomIntern.makeForm("presidential pardon", "PPF_Target");
+
+	b1.signForm(*ppf);
+	b1.executeForm(*ppf);
+	b2.signForm(*ppf);
+	b2.executeForm(*ppf);
+
+	delete ppf;
 	std::cout << "\n";
-
-	/*
-	b1.signForm(f1);
-	std::cout << f1;
-
-	b1.signForm(f2);
-	std::cout << f2;
-	*/
-
-
-	std::cout << "~~~~~~~ instancialize with bad grade value ~~~~~~~\n";
-
-	try {
-		Bureaucrat b3("abcde", 12345);
-		std::cout << b1 << "\n";
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-	/*
-	try {
-		Form f3("abcde", 0, 0);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-
-	try {
-		Form f4("abcde", 5, 222);
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-	*/
 
 
 	return (0);
