@@ -31,7 +31,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& toCopy) {
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& toAssign) {
 	VERBOSE && std::cout << "Bureaucrat copy assignment operator overload called\n";
-	this->_name = toAssign._name;
 	this->_grade = toAssign._grade;
 	return (*this);
 }
@@ -44,9 +43,6 @@ unsigned int	Bureaucrat::getGrade(void) const {
 	return (this->_grade);
 }
 
-void	Bureaucrat::setName(std::string name) {
-	this->_name = name;
-}
 void	Bureaucrat::setGrade(unsigned int grade) {
 	if (grade < 0)
 		throw	Bureaucrat::GradeTooHighException();

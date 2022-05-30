@@ -14,9 +14,9 @@ int	main(){
 	RobotomyRequestForm roboForm = RobotomyRequestForm("Robo Target");
 	PresidentialPardonForm ppForm = PresidentialPardonForm("Pardon Target");
 
-	/* AForm is abstract class. Not instanciable.
-	AForm	f1("f1", 150, 150);
-	AForm	f2("f2", 149, 149);
+	/* Form is abstract class. Not instanciable.
+	Form	f1("f1", 150, 150);
+	Form	f2("f2", 149, 149);
 	*/
 	std::cout << b1;
 	b1.signForm(theForm);

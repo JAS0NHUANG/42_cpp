@@ -5,7 +5,7 @@
 
 # include "Form.hpp"
 
-class AForm;
+class Form;
 
 class Bureaucrat {
 	public:
@@ -35,8 +35,8 @@ class Bureaucrat {
 		// member functions
 		void	upgrade(void); // minus
 		void	downgrade(void); // plus
-		void	signForm(AForm& f);
-		void	executeForm(AForm const& form);
+		void	signForm(Form& f);
+		void	executeForm(Form const& form);
 
 	private:
 		std::string	_name;

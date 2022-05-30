@@ -15,7 +15,6 @@ class Bureaucrat {
 		// accessor
 		std::string	getName(void) const;
 		unsigned int	getGrade(void) const;
-		void	setName(std::string name);
 		void	setGrade(unsigned int grade);
 
 		// exception handling
