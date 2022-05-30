@@ -5,14 +5,14 @@
 
 class Bureaucrat;
 
-class	AForm {
+class	Form {
 	public:
 		// canonical
-		AForm(void);
-		~AForm(void);
-		AForm(const AForm &toCopy);
-		AForm &operator=(const AForm &toAssign);
-		AForm(std::string name, unsigned int signGrade, unsigned int execGrade);
+		Form(void);
+		virtual	~Form(void);
+		Form(const Form &toCopy);
+		Form &operator=(const Form &toAssign);
+		Form(std::string name, unsigned int signGrade, unsigned int execGrade);
 
 		// accessor
 		std::string		getName(void) const;
@@ -48,6 +48,6 @@ class	AForm {
 		const unsigned int	_execGrade;
 };
 
-std::ostream	&operator<<(std::ostream& out, const AForm& f);
+std::ostream	&operator<<(std::ostream& out, const Form& f);
 
 #endif

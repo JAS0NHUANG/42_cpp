@@ -4,20 +4,32 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(){
 	std::cout << "~~~~~~~ Basic tests ~~~~~~~\n";
 	std::cout << "------- b1 f1-------\n";
 	Bureaucrat b1("b1", 150);
 	Bureaucrat b2("b2", 1);
-	AForm* rrf;
+	Form* rrf;
 	ShrubberyCreationForm theForm = ShrubberyCreationForm("Nice Target");
 	RobotomyRequestForm roboForm = RobotomyRequestForm("Robo Target");
 	PresidentialPardonForm ppForm = PresidentialPardonForm("Pardon Target");
 
-	/* AForm is abstract class. Not instanciable.
-	AForm	f1("f1", 150, 150);
-	AForm	f2("f2", 149, 149);
+	std::cout << "\n\n Intern tests: \n";
+	Form* newForm;
+	Intern	newIntern;
+	newForm = newIntern.makeForm("robotomy request", "RRF target");
+
+	b1.signForm(*newForm);
+
+	delete newForm;
+
+	std::cout << "\n\n";
+
+	/* Form is abstract class. Not instanciable.
+	Form	f1("f1", 150, 150);
+	Form	f2("f2", 149, 149);
 	*/
 	rrf = new RobotomyRequestForm("Robo T");
 	std::cout << b1;
@@ -52,6 +64,8 @@ int	main(){
 		std::cout << e.what();
 	}
 	std::cout << "\n";
+
+	delete rrf;
 
 	/*
 	b1.signForm(f1);

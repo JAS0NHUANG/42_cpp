@@ -81,7 +81,7 @@ void	Bureaucrat::downgrade(void) {// plus
 
 }
 
-void	Bureaucrat::signForm(AForm& f) {
+void	Bureaucrat::signForm(Form& f) {
 	if (f.getIsSigned()) {
 		std::cout << this->getName() << " couldn't sign " << f.getName() << \
 			" because it is already signed!\n";
@@ -97,7 +97,7 @@ void	Bureaucrat::signForm(AForm& f) {
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const & form) {
+void	Bureaucrat::executeForm(Form const & form) {
 	try {
 		form.execute(*this);
 	} catch (std::exception& e) {
