@@ -7,17 +7,20 @@
 # define VERBOSE 1
 #endif
 
-Bureaucrat::Bureaucrat(void) : _name("Default Bureaucrat"), _grade(150) {
+Bureaucrat::Bureaucrat(void) :
+	_name("Default Bureaucrat"), _grade(150)
+{
 	VERBOSE && std::cout << "Bureaucrat default constructor called\n";
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
+	_name(name), _grade(grade)
+{
 	VERBOSE && std::cout << "Bureaucrat constructor with parameters called\n";
 	if (grade < 1)
 		throw	Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw	Bureaucrat::GradeTooLowException();
-	this->_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(void) {
@@ -41,14 +44,6 @@ std::string	Bureaucrat::getName(void) const {
 
 unsigned int	Bureaucrat::getGrade(void) const {
 	return (this->_grade);
-}
-
-void	Bureaucrat::setGrade(unsigned int grade) {
-	if (grade < 0)
-		throw	Bureaucrat::GradeTooHighException();
-	if (grade > 150)
-		throw	Bureaucrat::GradeTooLowException();
-	this->_grade = grade;
 }
 
 // exception handling

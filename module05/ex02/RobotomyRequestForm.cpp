@@ -31,7 +31,7 @@ RobotomyRequestForm::RobotomyRequestForm(
 ) :
 	Form("RRF", 72, 45),
 	_target(target) {
-	VERBOSE && std::cout << "RobotomyRequestForm default constructor called\n";
+	VERBOSE && std::cout << "RobotomyRequestForm constructor with parameter called\n";
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &toAssign) {

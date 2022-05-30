@@ -4,7 +4,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class ShrubberyCreationForm : public AForm {
+class ShrubberyCreationForm : public Form {
 	public:
 		// canonical
 		ShrubberyCreationForm(void);

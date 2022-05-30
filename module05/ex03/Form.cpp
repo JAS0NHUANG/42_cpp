@@ -7,80 +7,80 @@
 # define VERBOSE 1
 #endif
 
-AForm::AForm(void) :
-	_name("Default AForm"), _isSigned(false), _signGrade(150), _execGrade(150) {
-	VERBOSE && std::cout << "AForm default constructor called\n";
+Form::Form(void) :
+	_name("Default Form"), _isSigned(false), _signGrade(150), _execGrade(150) {
+	VERBOSE && std::cout << "Form default constructor called\n";
 }
 
-AForm::~AForm(void) {
-	VERBOSE && std::cout << "AForm destructor called\n";
+Form::~Form(void) {
+	VERBOSE && std::cout << "Form destructor called\n";
 }
 
-AForm::AForm(const AForm &toCopy) :
+Form::Form(const Form &toCopy) :
 	_name(toCopy.getName()), _signGrade(toCopy.getSignGrade()), _execGrade(toCopy.getExecGrade()) {
-	VERBOSE && std::cout << "AForm copy constructor called\n";
+	VERBOSE && std::cout << "Form copy constructor called\n";
 	*this = toCopy;
 }
 
-AForm::AForm(std::string name, unsigned int signGrade, unsigned int execGrade) :
-	_name(name), _signGrade(signGrade), _execGrade(execGrade) {
-	VERBOSE && std::cout << "AForm default constructor called\n";
+Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade) :
+	_name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade) {
+	VERBOSE && std::cout << "Form default constructor called\n";
 	if (signGrade > 150 || execGrade > 150)
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (execGrade < 1 || execGrade < 1)
-		throw AForm::GradeTooHighException();
+		throw Form::GradeTooHighException();
 }
 
-AForm &AForm::operator=(const AForm &toAssign) {
-	VERBOSE && std::cout << "AForm copy assignment overload called\n";
+Form &Form::operator=(const Form &toAssign) {
+	VERBOSE && std::cout << "Form copy assignment overload called\n";
 	this->_isSigned = toAssign.getIsSigned();
 	return (*this);
 }
 
 // accessor
-std::string		AForm::getName(void) const {
+std::string		Form::getName(void) const {
 	return this->_name;
 }
 
-bool			AForm::getIsSigned(void) const {
+bool			Form::getIsSigned(void) const {
 	return this->_isSigned;
 }
 
-unsigned int	AForm::getSignGrade(void) const {
+unsigned int	Form::getSignGrade(void) const {
 	return this->_signGrade;
 }
 
-unsigned int	AForm::getExecGrade(void) const {
+unsigned int	Form::getExecGrade(void) const {
 	return this->_execGrade;
 }
 
-void	AForm::setIsSigned(bool isSigned) {
+void	Form::setIsSigned(bool isSigned) {
 	this->_isSigned = isSigned;
 }
 
 
 // exception hendling
-const char* AForm::GradeTooLowException::what() const throw() {
+const char* Form::GradeTooLowException::what() const throw() {
 		return ("the grade is too Low.\n");
 }
 
-const char* AForm::GradeTooHighException::what() const throw() {
+const char* Form::GradeTooHighException::what() const throw() {
 		return ("the grade is too High.\n");
 }
 
-const char* AForm::FormUnsignedException::what() const throw() {
+const char* Form::FormUnsignedException::what() const throw() {
 		return ("the form is not signed.\n");
 }
 
 // member functions
-void	AForm::beSigned(const Bureaucrat &b) {
+void	Form::beSigned(const Bureaucrat &b) {
 	if (b.getGrade() > this->getSignGrade())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	this->setIsSigned(true);
 }
 
-std::ostream	&operator<<(std::ostream& out, const AForm& f) {
-	out << "AForm name: " << f.getName() << \
+std::ostream	&operator<<(std::ostream& out, const Form& f) {
+	out << "Form name: " << f.getName() << \
 		", is signed: " << f.getIsSigned() << \
 		", sign grade: " << f.getSignGrade() << \
 		", execute grade: " << f.getExecGrade() << "\n";
