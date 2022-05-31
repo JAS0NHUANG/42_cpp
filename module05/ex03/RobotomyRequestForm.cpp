@@ -11,8 +11,8 @@
 #endif
 
 RobotomyRequestForm::RobotomyRequestForm(void) :
-	Form("Default SCF", 72, 45),
-	_target("Default Target") {
+	Form("Default SCF", 72, 45), _target("Default Target")
+{
 	VERBOSE && std::cout << "RobotomyRequestForm default constructor called\n";
 }
 
@@ -21,16 +21,16 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &toCopy) :
-	Form(toCopy.getName(), toCopy.getSignGrade(), toCopy.getExecGrade()), _target(toCopy.getTarget()) {
+	Form(toCopy.getName(), toCopy.getSignGrade(),
+	toCopy.getExecGrade()), _target(toCopy.getTarget())
+{
 	VERBOSE && std::cout << "RobotomyRequestForm copy constructor called\n";
 	*this = toCopy;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(
-	std::string target
-) :
-	Form("RRF", 72, 45),
-	_target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) :
+	Form("RRF", 72, 45), _target(target)
+{
 	VERBOSE && std::cout << "RobotomyRequestForm constructor with parameter called\n";
 }
 
@@ -50,6 +50,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 		throw Form::GradeTooLowException();
 	if (!this->getIsSigned())
 		throw Form::FormUnsignedException();
+	std::cout << executor.getName() << " executed " << this->getName() << "\n";
 	std::cout << "sszzsszzzsssSSSzZZZZSsszzsSSSSzZZZZZZ~~~~\n";
 	srand(time(0));
 	if (rand() % 2 == 0) {

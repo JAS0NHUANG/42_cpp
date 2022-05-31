@@ -10,8 +10,8 @@
 #endif
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) :
-	Form("Default SCF", 145, 137),
-	_target("Default Target") {
+	Form("Default SCF", 145, 137), _target("Default Target")
+{
 	VERBOSE && std::cout << "ShrubberyCreationForm default constructor called\n";
 }
 
@@ -20,17 +20,17 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &toCopy) :
-	Form(toCopy.getName(), toCopy.getSignGrade(), toCopy.getExecGrade()), _target(toCopy.getTarget()) {
+	Form(toCopy.getName(), toCopy.getSignGrade(),
+	toCopy.getExecGrade()), _target(toCopy.getTarget())
+{
 	VERBOSE && std::cout << "ShrubberyCreationForm copy constructor called\n";
 	*this = toCopy;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(
-	std::string target
-) :
-	Form("SCF", 145, 137),
-	_target(target) {
-	VERBOSE && std::cout << "ShrubberyCreationForm default constructor called\n";
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target ) :
+	Form("SCF", 145, 137), _target(target)
+{
+	VERBOSE && std::cout << "ShrubberyCreationForm constructor with parameter called\n";
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &toAssign) {
@@ -60,7 +60,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 		"    (L) (R) (L) (R)\n" <<
 		"\n" <<
 		"(This is a geek tree!)\n";
-	std::cout << executor.getName() << \
-		" execute ShrubberyCreationForm, create \"" << \
-		fileName << "\" and write a tree inside the file.\n";
+	std::cout << executor.getName() << " executed " << this->getName() << "\n";
+	std::cout << "Create \"" << fileName << "\" and write a tree inside the file.\n";
 }

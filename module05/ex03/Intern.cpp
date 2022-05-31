@@ -33,17 +33,28 @@ Intern &Intern::operator=(const Intern &toAssign) {
 Form* Intern::makeSCF(std::string target) const {
 	return (new ShrubberyCreationForm(target));
 };
+
 Form* Intern::makeRRF(std::string target) const{
 	return (new RobotomyRequestForm(target));
 }
+
 Form* Intern::makePPF(std::string target) const{
 	return (new PresidentialPardonForm(target));
 }
 
+// exception handling
+const char* Intern::NotValidFormTypeException::what() const throw() {
+	return ("The form type is not valid.\n");
+}
 
 Form*	Intern::makeForm(std::string formType, std::string target) const {
-	Form*	(Intern::*ft_ptr[3])(std::string) const = {&Intern::makeSCF, &Intern::makeRRF, &Intern::makePPF};
-	std::string formTypes[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	Form*	(Intern::*ft_ptr[3])(std::string) const = {
+		&Intern::makeSCF, &Intern::makeRRF, &Intern::makePPF
+	};
+	std::string formTypes[3] = {
+		"shrubbery creation", "robotomy request", "presidential pardon"
+	};
+
 	for (int i = 0; i < 3; i++) {
 		if (formTypes[i].compare(formType) == 0) {
 			std::cout << "Intern creates " << formType << " form.(target: " << \
@@ -51,6 +62,6 @@ Form*	Intern::makeForm(std::string formType, std::string target) const {
 			return (this->*ft_ptr[i])(target);
 		}
 	}
-	return (NULL);
+	throw Intern::NotValidFormTypeException();
 }
 

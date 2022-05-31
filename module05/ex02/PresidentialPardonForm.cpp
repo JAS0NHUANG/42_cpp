@@ -9,8 +9,8 @@
 #endif
 
 PresidentialPardonForm::PresidentialPardonForm(void) :
-	Form("Default SCF", 25, 5),
-	_target("Default Target") {
+	Form("Default SCF", 25, 5), _target("Default Target")
+{
 	VERBOSE && std::cout << "PresidentialPardonForm default constructor called\n";
 }
 
@@ -19,16 +19,16 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &toCopy) :
-	Form(toCopy.getName(), toCopy.getSignGrade(), toCopy.getExecGrade()), _target(toCopy.getTarget()) {
+	Form(toCopy.getName(), toCopy.getSignGrade(),
+	toCopy.getExecGrade()), _target(toCopy.getTarget())
+{
 	VERBOSE && std::cout << "PresidentialPardonForm copy constructor called\n";
 	*this = toCopy;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(
-	std::string target
-) :
-	Form("SCF", 25, 5),
-	_target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) :
+	Form("PPF", 25, 5), _target(target)
+{
 	VERBOSE && std::cout << "PresidentialPardonForm constructor with parameter called\n";
 }
 
@@ -48,5 +48,6 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 		throw Form::GradeTooLowException();
 	if (!this->getIsSigned())
 		throw Form::FormUnsignedException();
+	std::cout << executor.getName() << " executed " << this->getName() << "\n";
 	std::cout << this->getTarget() << " is pardoned by Zaphod Beeblebrox.\n";
 }

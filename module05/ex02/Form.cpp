@@ -17,14 +17,18 @@ Form::~Form(void) {
 }
 
 Form::Form(const Form &toCopy) :
-	_name(toCopy.getName()), _signGrade(toCopy.getSignGrade()), _execGrade(toCopy.getExecGrade()) {
+	_name(toCopy.getName()), _isSigned(toCopy.getIsSigned()),
+	_signGrade(toCopy.getSignGrade()), _execGrade(toCopy.getExecGrade())
+{
 	VERBOSE && std::cout << "Form copy constructor called\n";
 	*this = toCopy;
 }
 
 Form::Form(std::string name, unsigned int signGrade, unsigned int execGrade) :
-	_name(name), _signGrade(signGrade), _execGrade(execGrade) {
-	VERBOSE && std::cout << "Form default constructor called\n";
+	_name(name), _isSigned(false),
+	_signGrade(signGrade), _execGrade(execGrade)
+{
+	VERBOSE && std::cout << "Form constructor with parameters called\n";
 	if (signGrade > 150 || execGrade > 150)
 		throw Form::GradeTooLowException();
 	if (execGrade < 1 || execGrade < 1)

@@ -15,7 +15,8 @@ Bureaucrat::Bureaucrat(void) :
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
-	_name(name), _grade(grade) {
+	_name(name), _grade(grade)
+{
 	VERBOSE && std::cout << "Bureaucrat constructor with parameters called\n";
 	if (grade < 1)
 		throw	Bureaucrat::GradeTooHighException();

@@ -13,6 +13,10 @@ Bureaucrat::Bureaucrat(void) :
 	VERBOSE && std::cout << "Bureaucrat default constructor called\n";
 }
 
+Bureaucrat::~Bureaucrat(void) {
+	VERBOSE && std::cout << "Bureaucrat destructor called\n";
+}
+
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
 	_name(name), _grade(grade)
 {
@@ -21,10 +25,6 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
 		throw	Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw	Bureaucrat::GradeTooLowException();
-}
-
-Bureaucrat::~Bureaucrat(void) {
-	VERBOSE && std::cout << "Bureaucrat destructor called\n";
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& toCopy) {
@@ -72,7 +72,6 @@ void	Bureaucrat::downgrade(void) {// plus
 }
 
 // operator overload
-
 std::ostream	&operator<<(std::ostream& out, const Bureaucrat& b) {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".\n";
 	return (out);
