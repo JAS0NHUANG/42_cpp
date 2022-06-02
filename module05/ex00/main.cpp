@@ -8,13 +8,13 @@ int	main(){
 	std::cout << b1;
 	std::cout << "\n";
 	try {
-		std::cout << "Try to downgrade b1:\n";	
+		std::cout << "Try to downgrade b1:\n";
 		b1.downgrade();
 	} catch (std::exception &e) {
 		std::cout << e.what();
 	}
 	try {
-		std::cout << "Try to upgrade b1:\n";	
+		std::cout << "Try to upgrade b1:\n";
 		b1.upgrade();
 	} catch (std::exception &e) {
 		std::cout << e.what();
@@ -26,13 +26,13 @@ int	main(){
 	Bureaucrat b2("b2", 1);
 	std::cout << b2 << "\n";
 	try {
-		std::cout << "Try to upgrade b2:\n";	
+		std::cout << "Try to upgrade b2:\n";
 		b2.upgrade();
 	} catch (std::exception &e) {
 		std::cout << e.what();
 	}
 	try {
-		std::cout << "Try to downgrade b2:\n";	
+		std::cout << "Try to downgrade b2:\n";
 		b2.downgrade();
 	} catch (std::exception &e) {
 		std::cout << e.what();
@@ -44,7 +44,7 @@ int	main(){
 	Bureaucrat* hb = new Bureaucrat("hb", 130);
 	std::cout << *hb;
 	try {
-		std::cout << "Try to downgrade hb:\n";	
+		std::cout << "Try to downgrade hb:\n";
 		hb->downgrade();
 	} catch (std::exception &e) {
 		std::cout << e.what();

@@ -7,6 +7,7 @@
 #include "WrongCat.hpp"
 
 int	main() {
+	/*
 	std::cout << "~~~~~~Subject test~~~~~~\n";
 	const Animal* test = new Animal();
 	const Animal* j = new Dog();
@@ -22,15 +23,15 @@ int	main() {
 	i->printIdeas();
 	j->printIdeas();
 
-	/* should not have any leaks */
 	delete(j);
 	delete(i);
+	delete(test);
 	std::cout << std::endl;
 
 	std::cout << "~~~~~~Animal array~~~~~~\n";
 	std::cout << std::endl;
 
-	int	nbr = 1000;
+	int	nbr = 4;
 	Animal* animals[nbr];
 
 	std::cout << "------create dogs and cats-------\n" <<  std::endl;
@@ -60,7 +61,7 @@ int	main() {
 		delete animals[i];
 	}
 	std::cout << std::endl;
-
+*/
 	std::cout << "~~~~~~Kitty and Cutee's brains~~~~~~\n";
 	std::cout << "(deep copy test)\n";
 	Cat kitty;
