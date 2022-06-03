@@ -31,6 +31,8 @@ Converter::operator	char() const {
 	long double	c = 0;
 
 	c = std::strtold(this->getStr().c_str(), &ptr);
+	if (c != c)
+		throw Converter::ImpossibleException();
 	if (c < 32 || c > 126)
 		throw Converter::NonDisplayableException();
 	return (static_cast<char>(c));
@@ -38,6 +40,11 @@ Converter::operator	char() const {
 
 Converter::operator	int() const {
 	char* ptr = NULL;
+	long double c = 0;
+
+	c = std::strtold(this->getStr().c_str(), &ptr);
+	if (c != c || c > INT_MAX || c < INT_MIN)
+		throw Converter::ImpossibleException();
 	return (std::strtold(this->getStr().c_str(), &ptr));
 }
 
@@ -61,17 +68,37 @@ const char *Converter::ImpossibleException::what() const throw() {
 }
 
 void	Converter::printResults(void) const {
-	std::cout << this->getStr() << "\n";
+	// print char
 	try {
-		std::cout << static_cast<char>(*this) << "\n";
+		std::cout << "char: ";
+		char c = static_cast<char>(*this);
+		std::cout << "\'" << c << "\'\n";
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
+	// print int
 	try {
+		std::cout << "int: ";
 		std::cout << static_cast<int>(*this) << "\n";
 	} catch (std::exception &e) {
 		std::cout << e.what() << "\n";
 	}
-	std::cout << static_cast<float>(*this) <<  "f\n";
-	std::cout << static_cast<double>(*this) << "\n";
+	// print float
+	try {
+		std::cout << "float: ";
+		float f = static_cast<float>(*this);
+		std::cout << f;
+		((int)(f * 1000) % 1000 == 0) ? std::cout << ".0f\n" : std::cout << "f\n" ;
+	} catch (std::exception &e) {
+		std::cout << e.what() << "\n";
+	}
+	// print double
+	try {
+		std::cout << "double: ";
+		double d = static_cast<double>(*this);
+		std::cout << d;
+		((int)(d * 1000) % 1000 == 0) ? std::cout << ".0\n" : std::cout << "\n" ;
+	} catch (std::exception &e) {
+		std::cout << e.what() << "\n";
+	}
 }
