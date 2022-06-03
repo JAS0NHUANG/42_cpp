@@ -39,3 +39,7 @@ class Converter {
 };
 ```
 
+## string to number types
+int, float or double. (This will help, but won’t do the whole job!)
+
+`stold`, `stof`, `stod`, `stoi`, `stol`
