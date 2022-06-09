@@ -67,3 +67,14 @@ std::numeric_limits<int>::max();
 ```
 
 max float value : 340282300000000000000000000000000000000
+
+## check if the string is convertable to ld
+```
+char *ptr = NULL;
+
+c = strtold(str.c_str(), &ptr);
+if(str.c_str() == ptr)
+	// then the string is not convertable to number.
+```
+
+in `man strtold` : If no conversion is performed, zero is returned and the value of nptr is stored in the location referenced by endptr. 
