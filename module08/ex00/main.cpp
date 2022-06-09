@@ -1,38 +1,52 @@
 #include <vector>
-#include <iostream>
+#include <list>
 
+#include "easyfind.hpp"
 
 int	main() {
+	std::cout << "~~~~~~~ Test with vector ~~~~~~~\n";
 	std::vector<int> nbrVector;
-
 	
 	for (int i = 0; i < 6; i++) {
 		nbrVector.push_back(i);
 	}
-
 	nbrVector.push_back(88);
+	printContainer(nbrVector);
 
-	std::vector<int>::iterator it1 = std::find(nbrVector.begin(), nbrVector.end(), 9);
-	std::vector<int>::iterator it2 = std::find(nbrVector.begin(), nbrVector.end(), 10);
-	std::vector<int>::iterator it3 = std::find(nbrVector.begin(), nbrVector.end(), 88);
-
-	if (it1 == nbrVector.end()) {
-		std::cout << "it1 not found" << "\n";
-	} else {
-		std::cout << *it1 << "\n";
+	try {
+		std::cout << "easyfind: " << easyfind(nbrVector, 9);
+		std::cout << "\n";
+	} catch (std::exception & e) {
+		std::cout << e.what() << "\n";
+	}
+	try {
+		std::cout << "easyfind: " << easyfind(nbrVector, 88);
+		std::cout << "\n";
+	} catch (std::exception & e) {
+		std::cout << e.what() << "\n";
 	}
 
-	if (it2 == nbrVector.end()) {
-		std::cout << "it2 not found" << "\n";
-	} else {
-		std::cout << *it2 << "\n";
+	std::cout << "~~~~~~~ Test with vector ~~~~~~~\n";
+	std::list<int> nbrList;
+	
+	for (int i = 0; i < 6; i++) {
+		nbrList.push_back(i);
 	}
-	std::cout << *it3 << "\n";
-	std::cout << std::distance(nbrVector.begin(), it3) << "\n"; 
+	nbrList.push_back(88);
+	printContainer(nbrList);
 
-	std::vector<int>::iterator itr = nbrVector.begin();
-	for (int i = 0; itr + i != nbrVector.end(); i++) {
-		std::cout << *(itr + i) << "\n";
+	try {
+		std::cout << "easyfind: " << easyfind(nbrList, 9);
+		std::cout << "\n";
+	} catch (std::exception & e) {
+		std::cout << e.what() << "\n";
 	}
+	try {
+		std::cout << "easyfind: " << easyfind(nbrList, 88);
+		std::cout << "\n";
+	} catch (std::exception & e) {
+		std::cout << e.what() << "\n";
+	}
+
 	
 }
