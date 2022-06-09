@@ -43,7 +43,7 @@ Converter::operator	int() const {
 	long double c = 0;
 
 	c = std::strtold(this->getStr().c_str(), &ptr);
-	if (c != c || c > INT_MAX || c < INT_MIN)
+	if (c != c || c > 2147483647 || c < -214483648)
 		throw Converter::ImpossibleException();
 	return (std::strtold(this->getStr().c_str(), &ptr));
 }
