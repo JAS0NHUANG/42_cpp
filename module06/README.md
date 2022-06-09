@@ -59,4 +59,11 @@ retyping?
 the 'uintptr_t' type
 https://stackoverflow.com/questions/1845482/what-is-uintptr-t-data-type
 
+## number limits
 
+```
+#include <limits>
+std::numeric_limits<int>::max();
+```
+
+max float value : 340282300000000000000000000000000000000

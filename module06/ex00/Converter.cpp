@@ -1,8 +1,16 @@
-#include <iostream>
-#include <string>
-#include <cstdlib>
-
 #include "Converter.hpp"
+
+bool	isNanOrInf(std::string str) {
+	if (!str.compare("nan") || !str.compare("nanf") || \
+		!str.compare("+nan") || !str.compare("+nanf") || \
+		!str.compare("-nan") || !str.compare("-nanf") || \
+		!str.compare("inf") || !str.compare("inff") || \
+		!str.compare("-inf") || !str.compare("+inf") || \
+		!str.compare("-inff") || !str.compare("+inff")){
+		return (true);
+	}
+	return (false);
+}
 
 // canonical
 Converter::Converter(void) : _str(NULL) {}
@@ -27,11 +35,12 @@ const std::string& Converter::getStr(void) const {
 
 // cast operators
 Converter::operator	char() const {
+	std::string str = this->getStr();
 	char* ptr = NULL;
 	long double	c = 0;
 
-	c = std::strtold(this->getStr().c_str(), &ptr);
-	if (c != c)
+	c = std::strtold(str.c_str(), &ptr);
+	if (c != c || str.c_str() == ptr)
 		throw Converter::ImpossibleException();
 	if (c < 32 || c > 126)
 		throw Converter::NonDisplayableException();
@@ -39,23 +48,46 @@ Converter::operator	char() const {
 }
 
 Converter::operator	int() const {
+	std::string str = this->getStr();
 	char* ptr = NULL;
 	long double c = 0;
 
-	c = std::strtold(this->getStr().c_str(), &ptr);
-	if (c != c || c > 2147483647 || c < -214483648)
+	c = std::strtold(str.c_str(), &ptr);
+	if (c != c || str.c_str() == ptr || \
+		c > std::numeric_limits<int>::max() || \
+		c < -std::numeric_limits<int>::max())
 		throw Converter::ImpossibleException();
-	return (std::strtold(this->getStr().c_str(), &ptr));
+	return (c);
 }
 
 Converter::operator	float() const {
+	std::string str = this->getStr();
 	char* ptr = NULL;
-	return (std::strtof(this->getStr().c_str(), &ptr));
+	long double c = 0;
+
+	if (isNanOrInf(str) == true)
+		return (std::strtod(this->getStr().c_str(), &ptr));
+	c = std::strtold(str.c_str(), &ptr);
+	if (c != c || str.c_str() == ptr || \
+		c > std::numeric_limits<float>::max() || \
+		c < -std::numeric_limits<float>::max())
+		throw Converter::ImpossibleException();
+	return (c);
 }
 
 Converter::operator	double() const {
+	std::string str = this->getStr();
 	char* ptr = NULL;
-	return (std::strtod(this->getStr().c_str(), &ptr));
+	long double c = 0;
+
+	if (isNanOrInf(str) == true)
+		return (std::strtod(this->getStr().c_str(), &ptr));
+	c = std::strtold(str.c_str(), &ptr);
+	if (c != c || str.c_str() == ptr || \
+		c > std::numeric_limits<double>::max() || \
+		c < -std::numeric_limits<double>::max())
+		throw Converter::ImpossibleException();
+	return (c);
 }
 
 // exception handling
@@ -102,3 +134,4 @@ void	Converter::printResults(void) const {
 		std::cout << e.what() << "\n";
 	}
 }
+

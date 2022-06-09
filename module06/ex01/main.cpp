@@ -1,13 +1,7 @@
 #include <iostream>
 #include <stdint.h>
 
-typedef struct	s_data {
-	char			c;
-	int				i;
-	float			f;
-	double			d;
-	std::string		s;
-} Data;
+#include "Data.hpp"
 
 uintptr_t	serialize(Data* ptr) {
 	return (reinterpret_cast<uintptr_t>(ptr));
@@ -44,7 +38,7 @@ int	main(void) {
 
 	dataPtr = deserialize(ptr);
 
-	std::cout << "The data inside the serialized and deserialized Data structure:" << "\n";
+	std::cout << "The data inside the serialized then deserialized Data structure:" << "\n";
 	std::cout << dataPtr->c << "\n";
 	std::cout << dataPtr->i << "\n";
 	std::cout << dataPtr->f << "\n";

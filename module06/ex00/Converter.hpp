@@ -1,7 +1,10 @@
 #ifndef CONVERTER_HPP_
 #define CONVERTER_HPP_
 
+#include <iostream>
 #include <string>
+#include <cstdlib>
+#include <limits>
 
 class Converter {
 	public:
