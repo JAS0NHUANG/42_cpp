@@ -43,3 +43,20 @@ class Converter {
 int, float or double. (This will help, but won’t do the whole job!)
 
 `stold`, `stof`, `stod`, `stoi`, `stol`
+
+## reinterpret_cast
+used to cast pointer or reference?
+```
+float a = 42.42f
+
+void* b = &a; // promotion?
+int* c = reinterpret_cast<int*>(b); // demotion?
+int& d = reinterpret_cast<int&>(b); // demotion?
+```
+
+retyping?
+
+the 'uintptr_t' type
+https://stackoverflow.com/questions/1845482/what-is-uintptr-t-data-type
+
+

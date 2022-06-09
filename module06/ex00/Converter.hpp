@@ -10,7 +10,7 @@ class Converter {
 		~Converter(void);
 		Converter(const Converter &toCopy);
 		Converter &operator=(const Converter &toAssign);
-	
+
 		Converter(const std::string &str);
 
 		// getter
@@ -21,7 +21,7 @@ class Converter {
 		operator	int() const;
 		operator	float() const;
 		operator	double() const;
-		
+
 		// exception handling
 		class NonDisplayableException : public std::exception {
 			public:
