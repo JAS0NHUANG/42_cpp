@@ -18,6 +18,6 @@ void	add(T & item) {
 
 template<typename T>
 void	print(T & item) {
-	std::cout << item;
+	std::cout << item << "\n";
 }
 

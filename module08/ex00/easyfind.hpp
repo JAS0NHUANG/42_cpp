@@ -2,6 +2,9 @@
 #define EASYFIND_HPP_
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <list>
 
 template <typename T>
 int	easyfind(T container, int toFind) {
