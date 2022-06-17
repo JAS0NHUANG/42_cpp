@@ -1,5 +1,6 @@
 #ifndef SPAN_HPP_
 #define SPAN_HPP_
+#include <vector>
 
 class Span {
 	public:
@@ -17,8 +18,8 @@ class Span {
 		// exception handling
 		class NotEnoughElementException : public std::exception {
 			public:
-				const & std::exception::what() const throw();
-		}
+				virtual const char	*what() const throw();
+		};
 
 
 	private:
