@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+#include <cstdlib>
 
 template<typename T>
 void	iter(T *array, int size, void (*f)(T & item)) {
@@ -9,11 +11,7 @@ void	iter(T *array, int size, void (*f)(T & item)) {
 
 template<typename T>
 void	add(T & item) {
-	try {
-		item++;
-	} catch (std::exception & e) {
-		std::cout << "Can't add on this type: " << e.what() << "/n";
-	}
+	item++;
 }
 
 template<typename T>

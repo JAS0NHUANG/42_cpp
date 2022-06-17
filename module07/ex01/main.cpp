@@ -42,7 +42,7 @@ int main(void) {
 		std::string	array[] = {"hello", "this", "is", "an", "array"};
 		iter (array, 5, print);
 		std::cout << "\n";
-		/* cant add on string (won't even compile)
+		/* can't compile this
 		iter (array, 5, add);
 		*/
 	}

@@ -63,8 +63,9 @@ int	main(int, char**) {
 		std::cout << "before modification:\n";
 		printArray(a);
 		printArray(b);
+		a[1] = 42;
 		b[1] = 33;
-		std::cout << "after modification(only on b):\n";
+		std::cout << "after modification(set b[1] to 33 and a[1] to 42) :\n";
 		printArray(a);
 		printArray(b);
 	}

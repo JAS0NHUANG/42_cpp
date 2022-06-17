@@ -2,6 +2,9 @@
 #define SPAN_HPP_
 #include <vector>
 
+#include <vector>
+#include <algorithm>
+
 class Span {
 	public:
 		Span(void);
@@ -11,21 +14,27 @@ class Span {
 		Span &operator=(Span const & toAssign);
 
 		// member functions:
-		void	addnumber(int nbr);
+		int		size(void) const;
+		void	addNumber(int nbr);
+		void	addNumber(std::vector<int>::iterator it, std::vector<int>::iterator endit);
+		int		getElementByIndex(int index) const;
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
 
 		// exception handling
 		class NotEnoughElementException : public std::exception {
 			public:
-				virtual const char	*what() const throw();
+				virtual const char * what() const throw();
 		};
 
+		class SpanFullException : public std::exception {
+			public:
+				virtual const char * what() const throw();
+		};
 
 	private:
 		unsigned int	_n;
-		unsigned int	_count;
-		std::vector<int> *_v;
+		std::vector<int> _v;
 };
 
 #endif // SPAN_HPP_
