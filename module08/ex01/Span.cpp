@@ -36,10 +36,14 @@ void	Span::addNumber(int nbr) {
 	this->_v.push_back(nbr);
 }
 
-void	Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator endit) {
-	while (it < endit) {
-		this->addNumber(*it);
-		it++;
+int	generator(void) {
+	return (0);
+}
+
+void	Span::addNumber(void) {
+	std::generate_n(this->_v.begin(), (int)this->_n, generator);
+	for (unsigned int i = 0; i < this->_n; i++) {
+		this->_v.push_back(i);
 	}
 }
 
@@ -48,10 +52,10 @@ int		Span::getElementByIndex(int index) const {
 }
 
 unsigned int	Span::shortestSpan(void) const {
-	if (this->_v.size() <= 1)
+	if (this->size() <= 1)
 		throw Span::NotEnoughElementException();
 
-	std::vector<int>	diff(this->_v.size());
+	std::vector<int>	diff(this->size());
 	std::vector<int>	sorted(this->_v);
 	sort(sorted.begin(), sorted.end());
 	std::adjacent_difference(sorted.begin(), sorted.end(), diff.begin());

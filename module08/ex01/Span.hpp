@@ -16,7 +16,7 @@ class Span {
 		// member functions:
 		int		size(void) const;
 		void	addNumber(int nbr);
-		void	addNumber(std::vector<int>::iterator it, std::vector<int>::iterator endit);
+		void	addNumber(void);
 		int		getElementByIndex(int index) const;
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;

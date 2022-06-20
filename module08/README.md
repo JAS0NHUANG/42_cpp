@@ -22,4 +22,16 @@ iterator is just a pointer pointed to an element inside the container.
 ex: "cntnr.begin()" points to the first element of the container "cntnr", and "cntnr.end()" will point to the last element.
 we can also do arethmetic operation on iterators.
 
+## some `std::vector` member functions
+- `reserve()` 
 
+
+## about `std::stack`
+https://en.cppreference.com/w/cpp/container/stack
+to make an iterator on stack, we need to acces the underlying container `deque` via the protected member object `std::stack::c`.
+
+
+## Some good suggestions
+
+read some REAL LIFE CODES!!
+https://www.youtube.com/watch?v=F9eDv-YIOQ0
