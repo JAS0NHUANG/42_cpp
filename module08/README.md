@@ -7,7 +7,6 @@ Implemented as `class templates`
 
 `std::vector()`, `std::list()`, `std::stack()`(no iterators)
 
-
 ### algorithms
 `std::sort()`, `std::find()`
 
@@ -22,14 +21,14 @@ iterator is just a pointer pointed to an element inside the container.
 ex: "cntnr.begin()" points to the first element of the container "cntnr", and "cntnr.end()" will point to the last element.
 we can also do arethmetic operation on iterators.
 
+- Better use "const_iterator" whenever there is no changes intended to make on the element value. 
+
 ## some `std::vector` member functions
 - `reserve()` 
 
-
 ## about `std::stack`
 https://en.cppreference.com/w/cpp/container/stack
-to make an iterator on stack, we need to acces the underlying container `deque` via the protected member object `std::stack::c`.
-
+to make an iterator on stack, we need to acces the underlying container (default container is `deque`)_ via the protected member object `std::stack::c`.
 
 ## Some good suggestions
 
