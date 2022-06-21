@@ -86,9 +86,4 @@ int	main() {
 	std::cout << "Value inside the end - 1 iterator: " << *(strIte - 1) << "\n";
  
 
-	std::vector<int> intV;
-
-	std::vector<int>::iterator vecIt;
-	vecIt = intV.begin();
-	std::cout << *vecIt;
 }
