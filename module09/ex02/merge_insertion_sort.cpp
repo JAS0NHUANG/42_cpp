@@ -19,10 +19,19 @@ void	print_int_array(T& int_array) {
 	std::cout << "\n";
 }
 
+void	print_error(int error_code) {
+}
+
 /*******************************************************************************/
 /* get/check arguments														   */
 /*******************************************************************************/
+int	check_arguments(int ac, char** av) {
+	return 0;
+}
 
+int	get_numbers(int ac, char** av, std::vector<int> &int_vector, std::deque<int> &int_deque) {
+	return 0;
+}
 
 /*******************************************************************************/
 /* merge insertion sort														   */
@@ -175,6 +184,16 @@ void	merge_insertion_sort(T& array, int pair_by) {
 /* main 																	   */
 /*******************************************************************************/
 int main(int ac, char **av) {
+	if (check_arguments(ac, av) != 0) {
+		print_error(1);
+		return 1;
+	}
+	std::vector<int> int_vector;
+	std::deque<int> int_deque;
+	if (get_numbers(ac, av, int_vector, int_deque) != 0) {
+		print_error(2);
+		return 2;
+	}
 	// sort vectors
 	std::vector<int> vector_a = {1, 3, 5, 22, 44};
 	std::vector<int> vector_b = {98,  76, 199, 2, 3 ,44, 5, 5};
