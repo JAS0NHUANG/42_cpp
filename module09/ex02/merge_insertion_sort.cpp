@@ -38,10 +38,13 @@ int	get_numbers(int ac, char** av, std::vector<int> &int_vector, std::deque<int>
 /*******************************************************************************/
 template<typename T>
 void	swap_n_element(T& int_array, int n, int index) {
+	std::cout << "the N: " << n << "\n";
 	if (index + (2 * n) > int_array.size())
 		return;
 	for (int i = 0; i < n; i++) {
+		std::cout << "swaping a: " << int_array[index + i] << " b: "<< int_array[index + i + n] << "\n";
 		std::swap(int_array[index + i], int_array[index + i + n]);
+		print_int_array(int_array);
 	}
 }
 
@@ -99,12 +102,16 @@ void	insert(T& int_array, int pair_by) {
 		rest += pair_by;
 	}
 	// take out the rest and do the insertion without them
-	while (rest != 0) {
-		int value = int_array[(pair_by * pairs) + rest - 1];
-		holder_array.push_front(value);
-		int_array.erase(int_array.begin() + (pair_by * pairs) + rest - 1);
-		rest--;
+	for (int i = 0; i < rest; i++) {
+		holder_array.push_back(int_array[(pair_by * pairs) + i]);
 	}
+	int_array.erase(int_array.begin() + (pair_by * pairs), int_array.begin() + (pair_by * pairs) + rest);
+	std::cout << "int_array : " ;
+	print_int_array(int_array);
+	std::cout << "holder_array : " ;
+	print_int_array(holder_array);
+	std::cout << "\n";
+
 
 	// take out all the first element(with pair_by number) and create a vector/deque of.
 	std::deque<int> main_chain;
@@ -113,6 +120,9 @@ void	insert(T& int_array, int pair_by) {
 			main_chain.push_back(int_array[j + i * pair_by]);
 		}
 	}
+	std::cout << "main_chain before: " ;
+	print_int_array(main_chain);
+	std::cout << "\n";
 
 	for (int i = pair_by; i < int_array.size() - rest; i += (pair_by * 2)) {
 		// find the position to insert from the end of the main_chain
@@ -125,6 +135,9 @@ void	insert(T& int_array, int pair_by) {
 			}
 		}
 	}
+	std::cout << "main_chain after: " ;
+	print_int_array(main_chain);
+	std::cout << "\n";
 	int_array.clear();
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
 
@@ -136,24 +149,10 @@ void	insert(T& int_array, int pair_by) {
 				main_chain.push_back(holder_array[i]);
 			}
 		}
-	} else if (rest != pair_by / 2 && pair_by != 2){
-		// no insert of the rest, just add back to int_array
-		std::move(begin(holder_array), end(holder_array), back_inserter(main_chain));
-	} else {
-		// find the position to insert from the end of the main_chain
-		for (int j = main_chain.size() - pair_by; j >= 0; j -= pair_by) {
-			if (j > 0 && holder_array[0] > main_chain[j]) {
-				for (int k = 0; k < pair_by; k++) {
-					main_chain.insert(main_chain.begin() + j + pair_by + k, holder_array[k]);
-				}
-				break ;
-			} else if (j == 0) {
-				for (int k = 0; k < pair_by; k++) {
-					main_chain.insert(main_chain.begin() + j + k, holder_array[k]);
-				}
-			}
-		}
 	}
+	// no insert of the rest, just add back to int_array
+	std::cout << "just add rest to the back !!!!! \n";
+	std::move(begin(holder_array), end(holder_array), back_inserter(main_chain));
 	int_array.clear();
 	last_insert(main_chain);
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
@@ -214,9 +213,9 @@ int main(int ac, char **av) {
 	print_int_array(deque_c);
 
 	std::cout << "\n\nsort deques: \n";
-	merge_insertion_sort(deque_a, 1);
+	//merge_insertion_sort(deque_a, 1);
 	merge_insertion_sort(deque_b, 1);
-	merge_insertion_sort(deque_c, 1);
+	//merge_insertion_sort(deque_c, 1);
 
 	std::cout << "After sort: ";
 	print_int_array(deque_a);
