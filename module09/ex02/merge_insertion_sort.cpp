@@ -4,6 +4,11 @@
 #include <list>
 #include <utility>
 
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define RESET "\033[0;0m"
+
 /*******************************************************************************/
 /* printer																	   */
 /*******************************************************************************/
@@ -91,6 +96,8 @@ void	last_insert(std::deque<int>& main_chain) {
 
 template<typename T>
 void	insert(T& int_array, int pair_by) {
+	std::cout << YELLOW << "before insert!!\n" << RED;
+	print_int_array(int_array);
 	int rest = int_array.size() % pair_by;
 	int	pairs = int_array.size() / pair_by;
 	std::deque<int> holder_array;
@@ -124,7 +131,7 @@ void	insert(T& int_array, int pair_by) {
 	print_int_array(main_chain);
 	std::cout << "\n";
 
-	for (int i = pair_by; i < int_array.size() - rest; i += (pair_by * 2)) {
+	for (int i = pair_by; i < int_array.size(); i += (pair_by * 2)) {
 		// find the position to insert from the end of the main_chain
 		for (int j = main_chain.size() - pair_by; j >= 0; j -= pair_by) {
 			if (int_array[i] > main_chain[j]) {
@@ -141,21 +148,20 @@ void	insert(T& int_array, int pair_by) {
 	int_array.clear();
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
 
-	// check if we need to insert the rest
-	if (pair_by == 2 && holder_array.size() == 1) {
-		// do the last insert
-		if (holder_array.size() != 0) {
-			for (int i = 0; i < holder_array.size(); i++) {
-				main_chain.push_back(holder_array[i]);
-			}
-		}
-	}
 	// no insert of the rest, just add back to int_array
 	std::cout << "just add rest to the back !!!!! \n";
+	std::cout << "holder: ";
+	print_int_array(holder_array);
+	print_int_array(main_chain);
 	std::move(begin(holder_array), end(holder_array), back_inserter(main_chain));
+	print_int_array(main_chain);
 	int_array.clear();
-	last_insert(main_chain);
+	if (pair_by == 2)
+		last_insert(main_chain);
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
+	print_int_array(int_array);
+	std::cout << "The N:: " << pair_by << "\n";
+	std::cout << YELLOW <<  "insert finished\n\n" << RESET;
 }
 
 template<typename T>
@@ -175,6 +181,7 @@ void	merge_insertion_sort(T& array, int pair_by) {
 
 	pair_by *= 2;
 	merge_insertion_sort(array, pair_by);
+	std::cout << RED;
 	// after all the recursion and pair sorting, do the insertion
 	insert(array, pair_by);
 }
@@ -193,18 +200,21 @@ int main(int ac, char **av) {
 		print_error(2);
 		return 2;
 	}
+	/*
 	// sort vectors
 	std::vector<int> vector_a = {1, 3, 5, 22, 44};
 	std::vector<int> vector_b = {98,  76, 199, 2, 3 ,44, 5, 5};
 	print_int_array(vector_a);
 	print_int_array(vector_b);
 
-	merge_insertion_sort(vector_a, 1);
+	//merge_insertion_sort(vector_a, 1);
 	std::cout << "\n";
+	*/
 
 	// sort deques
 	std::deque<int> deque_a = {7, 1, 3, 5, 22, 13};
-	std::deque<int> deque_b = {98,  76, 199, 2, 3 ,44, 188 , 99, 5, 38, 1, 4, 7, 6, 9, 8, 10, 14, 27, 110};
+	// size 20
+	std::deque<int> deque_b = {87, 65 ,0, 98,  76, 199, 2, 3 ,44, 188 , 99, 5, 38, 1, 4, 7, 6, 9, 8, 10, 14, 27, 110};
 	std::deque<int> deque_c = {98,  76, 199, 2, 3 ,44, 188 , 99, 5};
 
 	std::cout << "\n\nbefore sort: \n";
