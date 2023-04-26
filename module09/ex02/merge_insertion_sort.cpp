@@ -43,13 +43,10 @@ int	get_numbers(int ac, char** av, std::vector<int> &int_vector, std::deque<int>
 /*******************************************************************************/
 template<typename T>
 void	swap_n_element(T& int_array, int n, int index) {
-	std::cout << "the N: " << n << "\n";
 	if (index + (2 * n) > int_array.size())
 		return;
 	for (int i = 0; i < n; i++) {
-		std::cout << "swaping a: " << int_array[index + i] << " b: "<< int_array[index + i + n] << "\n";
 		std::swap(int_array[index + i], int_array[index + i + n]);
-		print_int_array(int_array);
 	}
 }
 
@@ -95,6 +92,15 @@ void	last_insert(std::deque<int>& main_chain) {
 }
 
 template<typename T>
+void	find_position_and_insert(
+	T& int_array,
+	std::deque<int> holder_array,
+	int pair_by
+) {
+
+}
+
+template<typename T>
 void	insert(T& int_array, int pair_by) {
 	std::cout << YELLOW << "before insert!!\n" << RED;
 	print_int_array(int_array);
@@ -113,12 +119,6 @@ void	insert(T& int_array, int pair_by) {
 		holder_array.push_back(int_array[(pair_by * pairs) + i]);
 	}
 	int_array.erase(int_array.begin() + (pair_by * pairs), int_array.begin() + (pair_by * pairs) + rest);
-	std::cout << "int_array : " ;
-	print_int_array(int_array);
-	std::cout << "holder_array : " ;
-	print_int_array(holder_array);
-	std::cout << "\n";
-
 
 	// take out all the first element(with pair_by number) and create a vector/deque of.
 	std::deque<int> main_chain;
@@ -142,30 +142,32 @@ void	insert(T& int_array, int pair_by) {
 			}
 		}
 	}
-	std::cout << "main_chain after: " ;
-	print_int_array(main_chain);
-	std::cout << "\n";
+	if (holder_array.size() >= pair_by) {
+		for (int j = main_chain.size() - pair_by; j >= 0; j -= pair_by) {
+			if (holder_array[0] > main_chain[j]) {
+				for (int k = 0; k < pair_by; k++) {
+					main_chain.insert(main_chain.begin() + j + pair_by + k, holder_array[k]);
+				}
+				holder_array.erase(holder_array.begin(), holder_array.begin() + pair_by);
+				break ;
+			}
+		}
+	}
 	int_array.clear();
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
 
 	// no insert of the rest, just add back to int_array
-	std::cout << "just add rest to the back !!!!! \n";
-	std::cout << "holder: ";
-	print_int_array(holder_array);
-	print_int_array(main_chain);
 	std::move(begin(holder_array), end(holder_array), back_inserter(main_chain));
-	print_int_array(main_chain);
 	int_array.clear();
 	if (pair_by == 2)
 		last_insert(main_chain);
 	std::move(begin(main_chain), end(main_chain), back_inserter(int_array));
 	print_int_array(int_array);
-	std::cout << "The N:: " << pair_by << "\n";
-	std::cout << YELLOW <<  "insert finished\n\n" << RESET;
 }
 
 template<typename T>
 void	merge_insertion_sort(T& array, int pair_by) {
+	std::cout << "in MIS!!!\n";
 /* first pair_by 1, then pair_by 2, then 4 ...etc */
 /* if the size of array / pair_by * 2 is 1, stop the recursion */
 	if (array.size() / pair_by  == 1) {
@@ -174,6 +176,8 @@ void	merge_insertion_sort(T& array, int pair_by) {
 
 /* iterate through the array and find the smallist inside each pair */
 	for (int i = 0; i < array.size(); i += (pair_by * 2)) {
+		if (i + pair_by > array.size())
+			break;
 		if (array[i] > array[i + pair_by]) {
 			swap_n_element(array, pair_by, i);
 		}
@@ -215,6 +219,9 @@ int main(int ac, char **av) {
 	std::deque<int> deque_a = {7, 1, 3, 5, 22, 13};
 	// size 20
 	std::deque<int> deque_b = {87, 65 ,0, 98,  76, 199, 2, 3 ,44, 188 , 99, 5, 38, 1, 4, 7, 6, 9, 8, 10, 14, 27, 110};
+	for (int i = 3000; i > 1500; i--) {
+		deque_b.push_back(i);
+	}
 	std::deque<int> deque_c = {98,  76, 199, 2, 3 ,44, 188 , 99, 5};
 
 	std::cout << "\n\nbefore sort: \n";
