@@ -49,9 +49,9 @@ int main(int ac, char **av) {
 
 	std::cout << "After:\t";
 	print_int_array(int_vector);
-	std::cout << "Time to process a range of \t" <<  ac - 1 << "\t"
-		<< " elements with std::vector :\t" << v_diff << "us\n";
-	std::cout << "Time to process a range of \t" <<  ac - 1 << "\t"
-		<< " elements with std::deque :\t" << d_diff << "us\n";
+	std::cout << "Time to process a range of \t" <<  ac - 1
+		<< " elements with std::vector:\t" << v_diff << "\tus\n";
+	std::cout << "Time to process a range of \t" <<  ac - 1
+		<< " elements with std::deque:\t" << d_diff << "\tus\n";
 
 }
