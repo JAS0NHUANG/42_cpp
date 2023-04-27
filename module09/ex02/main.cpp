@@ -20,10 +20,11 @@ int main(int ac, char **av) {
 	get_numbers(ac, av, int_vector, int_deque);
 	std::cout << "Before:\t";
 	print_int_array(int_deque);
+	std::cout << "\n";
 
 	// start operation and timer
 	struct timeval	time_start, time_end;
-	long long	v_start, v_end, d_start, d_end, v_diff, d_diff;
+	unsigned long long	v_start, v_end, d_start, d_end, v_diff, d_diff;
 
 	// start counting time and sort vector
 	if (gettimeofday(&time_start, NULL))
@@ -49,9 +50,10 @@ int main(int ac, char **av) {
 
 	std::cout << "After:\t";
 	print_int_array(int_vector);
+	std::cout << "\n";
 	std::cout << "Time to process a range of \t" <<  ac - 1
 		<< " elements with std::vector:\t" << v_diff << "\tus\n";
+	std::cout << "\n";
 	std::cout << "Time to process a range of \t" <<  ac - 1
 		<< " elements with std::deque:\t" << d_diff << "\tus\n";
-
 }

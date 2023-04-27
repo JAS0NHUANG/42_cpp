@@ -124,8 +124,6 @@ void	insert(T& int_array, int pair_by) {
 			}
 		}
 	}
-	int_array.clear();
-	int_array.insert(int_array.end(), main_chain.begin(), main_chain.end());
 
 	// no insert of the rest, just add back to int_array
 	main_chain.insert(main_chain.end(), holder_array.begin(), holder_array.end());
