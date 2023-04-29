@@ -16,6 +16,7 @@ enum eStatusCode {
 	BAD_INPUT,
 	NEGATIVE,
 	TOO_BIG,
+	NO_BTC,
 };
 
 // validators
@@ -30,12 +31,13 @@ bool			isNumberInRange(double);
 
 // utils
 int				readDB(std::map<std::string, double> & db_map);
-std::string		trim(std::string str);
+std::string		trim(std::string& str);
+int				readInput(std::string& input_str, std::map<std::string, double>& db_map);
 
 // printer
-void			printLine(int statusNumber);
-void			printError(int errorNumber);
+void			printError(int errorNumber, std::string err_item);
 
+// debug
 void			printStrDoubleMap(const std::map<std::string, double> &theMap);
 
 #endif

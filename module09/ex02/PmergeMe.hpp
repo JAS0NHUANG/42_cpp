@@ -100,9 +100,8 @@ void	insert(T& int_array, int pair_by) {
 				break ;
 			} else if (j == 0) {
 				for (int k = 0; k < pair_by; k++) {
-					main_chain.insert(main_chain.begin() + k, holder_array[k]);
+					main_chain.insert(main_chain.begin() + k, int_array[i + k]);
 				}
-				holder_array.erase(holder_array.begin(), holder_array.begin() + pair_by);
 				break ;
 			}
 		}

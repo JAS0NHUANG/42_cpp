@@ -15,27 +15,19 @@ int	main(int ac, char **av) {
 	if ((returnValue = readDB(db_map)) > 0)
 		return returnValue;
 
-	printStrDoubleMap(db_map);
+	/*******************************************************************************/
+	// debug
+	/*******************************************************************************/
+	// printStrDoubleMap(db_map);
 
+	/*******************************************************************************/
 	// open and read input file, parse each line and print result
-	std::ifstream		input_fs;
-	input_fs.open(av[1]);
-	if (!input_fs.is_open()) {
-		printLine(FILE_ERROR);
-		return FILE_ERROR;
-	}
+	/*******************************************************************************/
+	std::string input_str = std::string(av[1]);
+
+	readInput(input_str, db_map);
 
 /*
-	double a = 9.9;
-	double b = (int)(a * 100 + .5);
-	double c = (double)b/100;
-	std::cout << c << "\n";
-
-	std::ostringstream oss;
-	oss << c;
-
-	std::cout << std::setprecision(10) << oss.str() << "\n";
-*/
 	int year, dash;
 	std::string str = "1991-ki";
 	std::istringstream iss(str);
@@ -45,6 +37,7 @@ int	main(int ac, char **av) {
 	}
 	std::cout << "year: " << year;
 	std::cout << " dash: " << dash;
+	*/
 
 	return 0;
 

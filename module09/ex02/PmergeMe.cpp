@@ -81,14 +81,21 @@ void	last_insert(std::deque<int>& main_chain) {
 	main_chain.insert(main_chain.end(), main_chain_holder.begin(), main_chain_holder.end());
 
 	for (size_t i = 0; i < sub_chain.size(); i++) {
-		for (size_t j = main_chain.size() - 1; j >=0; j--) {
-			if (sub_chain[i] > main_chain[j]) {
-				main_chain.insert(main_chain.begin() + j + 1, sub_chain[i]);
-				break ;
-			} else if (j == 0) {
-				main_chain.insert(main_chain.begin(), sub_chain[i]);
-				break ;
+		int left = 0;
+		int right = main_chain.size() - 1;
+
+		while (right > left) {
+			int mid = (left + right) / 2;
+			if (sub_chain[i] > main_chain[mid]) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
 			}
+		}
+		if (sub_chain[i] > main_chain[left]) {
+			main_chain.insert(main_chain.begin() + left + 1, sub_chain[i]);
+		} else {
+			main_chain.insert(main_chain.begin() + left, sub_chain[i]);
 		}
 	}
 	if (rest != -1) {

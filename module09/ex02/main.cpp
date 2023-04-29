@@ -23,29 +23,35 @@ int main(int ac, char **av) {
 	std::cout << "\n";
 
 	// start operation and timer
-	struct timeval	time_start, time_end;
-	unsigned long long	v_start, v_end, d_start, d_end, v_diff, d_diff;
+	struct timeval	v_time_start, v_time_end, d_time_start, d_time_end;
+	long int	v_start, v_end, d_start, d_end, v_diff, d_diff;
 
 	// start counting time and sort vector
-	if (gettimeofday(&time_start, NULL))
+	if (gettimeofday(&v_time_start, NULL))
 		return (1);
 	merge_insertion_sort(int_vector, 1);
-	if (gettimeofday(&time_end, NULL))
+	if (gettimeofday(&v_time_end, NULL))
 		return (1);
 	// calculate time used
-	v_start = time_start.tv_usec;
-	v_end = time_end.tv_usec;
+	v_start = v_time_start.tv_usec;
+	v_end = v_time_end.tv_usec;
+	if ((v_time_end.tv_sec - v_time_start.tv_sec) >= 1) {
+		v_end += 1000000;
+	}
 	v_diff = v_end - v_start;
 
 	// start counting time and sort deque
-	if (gettimeofday(&time_start, NULL))
+	if (gettimeofday(&d_time_start, NULL))
 		return (1);
-	merge_insertion_sort(int_vector, 1);
-	if (gettimeofday(&time_end, NULL))
+	merge_insertion_sort(int_deque, 1);
+	if (gettimeofday(&d_time_end, NULL))
 		return (1);
 	// calculate time used
-	d_start = time_start.tv_usec;
-	d_end = time_end.tv_usec;
+	d_start = d_time_start.tv_usec;
+	d_end = d_time_end.tv_usec;
+	if ((d_time_end.tv_sec - d_time_start.tv_sec) >= 1) {
+		d_end += 1000000;
+	}
 	d_diff = d_end - d_start;
 
 	std::cout << "After:\t";

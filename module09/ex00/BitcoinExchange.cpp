@@ -5,11 +5,11 @@
 /*******************************************************************************/
 int		checkArguments(int ac, char **av) {
 	if (ac > 2) {
-		printLine(TOO_MANY_ARGS);
+		printError(TOO_MANY_ARGS, "");
 		return TOO_MANY_ARGS;
 	}
 	if (ac < 2 || std::string(av[1]) == "") {
-		printLine(FILE_ERROR);
+		printError(FILE_ERROR, "");
 		return FILE_ERROR;
 	}
 	return 0;
@@ -44,7 +44,7 @@ int		readDB(std::map<std::string, double> & db_map) {
 	std::ifstream		db_fs;
 	db_fs.open("./files/data.csv");
 	if (!db_fs.is_open()) {
-		printLine(DATABASE_ERROR);
+		printError(DATABASE_ERROR, "");
 		return DATABASE_ERROR;
 	}
 
@@ -56,11 +56,11 @@ int		readDB(std::map<std::string, double> & db_map) {
 		getline(db_fs, line);
 	while(!db_fs.eof() && getline(db_fs, line)) {
 		if (isValidDBLine(line) == false) {
-			printLine(DATABASE_ERROR);
+			printError(DATABASE_ERROR, "");
 			return DATABASE_ERROR;
 		}
 		dateStr = line.substr(0, line.find(","));
-		priceStr = line.substr(line.find(",") + 1, line.length());
+		priceStr = line.substr(line.find(",") + 1);
 		price = atof(priceStr.c_str());
 
 		db_map.insert( std::pair<std::string, double>( dateStr, price ) );
@@ -68,17 +68,72 @@ int		readDB(std::map<std::string, double> & db_map) {
 	return 0;
 }
 
+std::string	trim(std::string& str) {
+	int i = 0;
+	int j = (int)str.size() - 1;
+	std::string result;
+	while (str[i] == ' ')
+		i++;
+	while (str[j] == ' ')
+		j--;
+	result = str.substr(i, j + 1);
+	return result;
+}
+
+int		readInput(std::string& input_str, std::map<std::string, double>& db_map) {
+	std::ifstream		input_fs;
+	input_fs.open(input_str.c_str());
+	if (!input_fs.is_open()) {
+		printError(FILE_ERROR, "");
+		return FILE_ERROR;
+	}
+
+	std::string line;
+	std::map<std::string, double>::iterator	map_it;
+
+	// get rid of the first line
+	if (!input_fs.eof())
+		getline(input_fs, line);
+	while (!input_fs.eof() && getline(input_fs, line)) {
+		std::string key = line.substr(0, line.find("|"));
+		key = trim(key);
+		std::string amount_str = line.substr(line.find("|") + 1);
+		double		amount = atof(amount_str.c_str());
+
+		if (isValidDate(key) == false) {
+			printError(BAD_INPUT, key);
+			continue ;
+		}
+		if (amount < 0) {
+			printError(NEGATIVE, "");
+			continue ;
+		}
+		if (amount > 1000) {
+			printError(TOO_BIG, "");
+			continue ;
+		}
+
+		if (db_map.count(key)){
+			std::cout << key << " => " << amount << " = " << (amount * db_map[key]) << "\n";
+		} else {
+			map_it = db_map.upper_bound(key);
+			if (map_it == db_map.begin()) {
+				printError(NO_BTC, "");
+				continue ;
+			}
+			map_it--;
+			std::cout << key << " => " << amount << " = " << (amount * map_it->second) << "\n";
+		}
+
+	}
+	return 0;
+}
+
 /*******************************************************************************/
 /* printers																	   */
 /*******************************************************************************/
-void	printLine(int statusNumber) {
-	if (statusNumber > 0) {
-		printError(statusNumber);
-		return;
-	}
-}
 
-void printError(int statusNumber) {
+void printError(int statusNumber, std::string err_item) {
 	std::string		error_str;
 	if (statusNumber == DATABASE_ERROR)
 		error_str = "faild reading database.";
@@ -86,7 +141,15 @@ void printError(int statusNumber) {
 		error_str = "could not open file.";
 	else if (statusNumber == TOO_MANY_ARGS)
 		error_str = "too many arguments.";
-	std::cout << "ERROR: " << error_str << "\n";
+	else if (statusNumber == NO_BTC)
+		error_str = "bitcoin not exist yet.";
+	else if (statusNumber == BAD_INPUT)
+		error_str = "bad input => ";
+	else if (statusNumber == NEGATIVE)
+		error_str = "not a positive number.";
+	else if (statusNumber == TOO_BIG)
+		error_str = "too large a number.";
+	std::cout << "Error: " << error_str << err_item << "\n";
 }
 
 
