@@ -28,10 +28,19 @@ bool	isValidDBLine(std::string line) {
 
 bool	isValidDate(std::string dateStr) {
 	std::istringstream	dateISS(dateStr);
-	int		year, month, day, end;
+	int		year, month, day, end, feb_days;
 	char	dash1, dash2;
 
+	feb_days = 28;
 	dateISS >> year >> dash1 >> month >> dash2 >> day >> end;
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		return false;
+	if (month == 2) {
+		if ((year % 400 == 0) || ((year % 100 != 0) && (year % 4 == 0)))
+			feb_days = 29;
+		if (day > feb_days)
+			return false;
+	}
 	if (dash1 == '-' && dash2 == '-' &&
         year >= 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
 		return true;
